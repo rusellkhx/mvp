@@ -19,7 +19,7 @@ protocol BreedViewControllerProtocol: class {
 }
 
 class BreedViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
@@ -30,7 +30,7 @@ class BreedViewController: UIViewController {
         presenter = BreedPresenter(view: self)
         setupViews()
     }
-
+    
     private func setupViews() {
         setupTableView()
         activityIndicator.center = self.view.center
@@ -39,15 +39,14 @@ class BreedViewController: UIViewController {
     }
     
     private func setupTableView() {
-           tableView.register(BreedTableViewCell.self)
-           tableView.dataSource = self
-           tableView.delegate = self
+        tableView.register(BreedTableViewCell.self)
+        tableView.dataSource = self
+        tableView.delegate = self
     }
     
     private func setupNavBar() {
         self.title = "Breed"
     }
-
 }
 
 extension BreedViewController: UITableViewDataSource {
@@ -71,45 +70,45 @@ extension BreedViewController: UITableViewDelegate {
     
     //Header
     /*func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-        heightForHeader()
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        heightForHeader()
-    }
-    
-    private func heightForHeader() -> CGFloat {
-        .leastNonzeroMagnitude
-    }
-    
-    //Footer
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footer = UIView()
-        footer.backgroundColor = .clear
-        return footer
-    }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
-        heightForFooter()
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        heightForFooter()
-    }
-    
-    private func heightForFooter() -> CGFloat {
-        presenter.heightForFooter()
-    }
-    
-    //Cell
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        presenter.heightForCell()
-    }*/
+     heightForHeader()
+     }
+     
+     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+     heightForHeader()
+     }
+     
+     private func heightForHeader() -> CGFloat {
+     .leastNonzeroMagnitude
+     }
+     
+     //Footer
+     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+     let footer = UIView()
+     footer.backgroundColor = .clear
+     return footer
+     }
+     
+     func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
+     heightForFooter()
+     }
+     
+     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+     heightForFooter()
+     }
+     
+     private func heightForFooter() -> CGFloat {
+     presenter.heightForFooter()
+     }
+     
+     //Cell
+     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+     presenter.heightForCell()
+     }*/
 }
 
 
 extension BreedViewController: BreedViewControllerProtocol {
-
+    
     func startActivityIdicator() {
         DispatchQueue.main.async {
             self.activityIndicator.startAnimating()

@@ -14,8 +14,6 @@ protocol BreedPresenterProtocol: class {
     func getCountItem() -> Int
     //func heightForFooter() -> CGFloat
     //func heightForCell() -> CGFloat
-    var finalResult: [String : [String]] { get }
-    var breedResults: [String] { get }
 }
 
 class BreedPresenter: BreedPresenterProtocol {
@@ -47,18 +45,15 @@ class BreedPresenter: BreedPresenterProtocol {
                 self.dogBreed = data
                 self.finalResult = self.dogBreed[0].message
                 let breedArray = self.dogBreed[0].message.keys.sorted()
-                print(breedArray.count)
                 for type in breedArray {
                     self.breedResults.append(type)
                 }
                 self.view.reloadTable()
-                print(self.breedResults.count)
             }
         }
     }
     
     func getCountItem() -> Int {
-        //print(finalResult.count)
         return breedResults.count
     }
     

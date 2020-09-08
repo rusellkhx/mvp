@@ -14,6 +14,8 @@
 		42183CEE250552F400087236 /* BreedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42183CED250552F400087236 /* BreedTableViewCell.swift */; };
 		42183CF2250554BA00087236 /* BreedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42183CF1250554BA00087236 /* BreedTableViewCell.xib */; };
 		42183CF525060E1500087236 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42183CF425060E1500087236 /* Extensions.swift */; };
+		422EF93225079E8800C3174B /* BreedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 422EF93125079E8800C3174B /* BreedViewController.xib */; };
+		422EF93425079F4B00C3174B /* BuilderModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EF93325079F4B00C3174B /* BuilderModule.swift */; };
 		4250F15E25052A4600E57761 /* BreedRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250F15D25052A4600E57761 /* BreedRequests.swift */; };
 		4250F1602505301800E57761 /* RestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250F15F2505301800E57761 /* RestClient.swift */; };
 		4250F163250530AE00E57761 /* BreedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4250F162250530AE00E57761 /* BreedPresenter.swift */; };
@@ -35,6 +37,8 @@
 		42183CED250552F400087236 /* BreedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedTableViewCell.swift; sourceTree = "<group>"; };
 		42183CF1250554BA00087236 /* BreedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BreedTableViewCell.xib; sourceTree = "<group>"; };
 		42183CF425060E1500087236 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		422EF93125079E8800C3174B /* BreedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BreedViewController.xib; sourceTree = "<group>"; };
+		422EF93325079F4B00C3174B /* BuilderModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuilderModule.swift; sourceTree = "<group>"; };
 		4250F15D25052A4600E57761 /* BreedRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedRequests.swift; sourceTree = "<group>"; };
 		4250F15F2505301800E57761 /* RestClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestClient.swift; sourceTree = "<group>"; };
 		4250F162250530AE00E57761 /* BreedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedPresenter.swift; sourceTree = "<group>"; };
@@ -105,6 +109,7 @@
 				42183CEC250552E000087236 /* Cell */,
 				4250F162250530AE00E57761 /* BreedPresenter.swift */,
 				4251C8C624FF7D8C00D3EF94 /* BreedViewController.swift */,
+				422EF93125079E8800C3174B /* BreedViewController.xib */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -130,6 +135,7 @@
 		4251C8C124FF7D8C00D3EF94 /* MVP_EXAMPLE */ = {
 			isa = PBXGroup;
 			children = (
+				422EF93325079F4B00C3174B /* BuilderModule.swift */,
 				42183CF325060DFF00087236 /* Extensions */,
 				4250F1612505308900E57761 /* Presenter */,
 				42150D6F2504CA6F00EFDE62 /* Model */,
@@ -222,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42183CF2250554BA00087236 /* BreedTableViewCell.xib in Resources */,
+				422EF93225079E8800C3174B /* BreedViewController.xib in Resources */,
 				4251C8CF24FF7D8D00D3EF94 /* LaunchScreen.storyboard in Resources */,
 				4251C8CC24FF7D8D00D3EF94 /* Assets.xcassets in Resources */,
 				4251C8CA24FF7D8C00D3EF94 /* Main.storyboard in Resources */,
@@ -281,6 +288,7 @@
 				4250F163250530AE00E57761 /* BreedPresenter.swift in Sources */,
 				4216944624FF9CCA007A5A97 /* HttpService.swift in Sources */,
 				42150D6E2504C9A400EFDE62 /* Requests.swift in Sources */,
+				422EF93425079F4B00C3174B /* BuilderModule.swift in Sources */,
 				4251C8C724FF7D8C00D3EF94 /* BreedViewController.swift in Sources */,
 				42183CEE250552F400087236 /* BreedTableViewCell.swift in Sources */,
 				4250F1602505301800E57761 /* RestClient.swift in Sources */,
