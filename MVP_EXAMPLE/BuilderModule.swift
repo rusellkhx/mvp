@@ -14,11 +14,14 @@ protocol Builder {
 
 class ModuleBuilder: Builder {
     static func createMainModule() -> UIViewController {
-        
         let view = BreedViewController()
         let presenter = BreedPresenter(view: view)
         view.presenter = presenter
-        
+        return view
+    }
+    
+    static func createFavouritesModule() -> UIViewController {
+        let view = FavouritesViewController()
         return view
     }
     

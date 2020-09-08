@@ -12,8 +12,6 @@ protocol BreedPresenterProtocol: class {
     init(view: BreedViewControllerProtocol)
     func configurateCell(_ cell: BreedTableViewCellProtocol, item: Int)
     func getCountItem() -> Int
-    //func heightForFooter() -> CGFloat
-    //func heightForCell() -> CGFloat
 }
 
 class BreedPresenter: BreedPresenterProtocol {
@@ -69,15 +67,6 @@ class BreedPresenter: BreedPresenterProtocol {
         }
         
     }
-    
-    /*func heightForFooter() -> CGFloat {
-        return 20
-    }
-    
-    func heightForCell() -> CGFloat {
-        return 60
-    }*/
-    
 }
 
 

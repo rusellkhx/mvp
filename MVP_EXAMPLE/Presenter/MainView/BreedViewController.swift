@@ -67,43 +67,7 @@ extension BreedViewController: UITableViewDataSource {
 }
 
 extension BreedViewController: UITableViewDelegate {
-    
-    //Header
-    /*func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-     heightForHeader()
-     }
-     
-     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-     heightForHeader()
-     }
-     
-     private func heightForHeader() -> CGFloat {
-     .leastNonzeroMagnitude
-     }
-     
-     //Footer
-     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-     let footer = UIView()
-     footer.backgroundColor = .clear
-     return footer
-     }
-     
-     func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
-     heightForFooter()
-     }
-     
-     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-     heightForFooter()
-     }
-     
-     private func heightForFooter() -> CGFloat {
-     presenter.heightForFooter()
-     }
-     
-     //Cell
-     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-     presenter.heightForCell()
-     }*/
+
 }
 
 
