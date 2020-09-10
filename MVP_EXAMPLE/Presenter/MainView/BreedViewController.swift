@@ -45,7 +45,7 @@ class BreedViewController: UIViewController {
     }
     
     private func setupNavBar() {
-       self.title = "Breed"
+       title = "Breed"
     }
 }
 

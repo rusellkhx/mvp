@@ -46,14 +46,12 @@ class SubBreedsViewController: UIViewController {
     }
     
     private func setupNavBar() {
-        self.title = presenter.breedName()
-        print(presenter.breedName())
+        title = presenter.breedName()
     }
 }
 
 extension SubBreedsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(presenter.getCountItem())
         return presenter.getCountItem()
     }
     
@@ -67,7 +65,6 @@ extension SubBreedsViewController: UITableViewDataSource {
 extension SubBreedsViewController: UITableViewDelegate {
     
 }
-
 
 extension SubBreedsViewController: SubBreedsViewControllerProtocol {
     
