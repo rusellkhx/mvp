@@ -18,6 +18,12 @@ struct Breed: Codable {
     }
 }
 
+
+struct SubBreeeds: Codable {
+    let message: [String]
+    let status: String
+}
+
 struct Image: Codable {
     let status: String
     let message: [String]

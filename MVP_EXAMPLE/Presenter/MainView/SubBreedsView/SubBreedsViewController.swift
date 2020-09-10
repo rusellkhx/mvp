@@ -1,34 +1,35 @@
 //
-//  ViewController.swift
+//  SubBreedsViewController.swift
 //  MVP_EXAMPLE
 //
-//  Created by Rusell on 02.09.2020.
+//  Created by Rusell on 08.09.2020.
 //  Copyright © 2020 RusellKh. All rights reserved.
 //
 
 import UIKit
 
-protocol BreedViewControllerProtocol: class {
+protocol SubBreedsViewControllerProtocol: class {
     func startActivityIdicator()
     func stopActivityIdicator()
     func reloadTable()
-    func pushToVC(_ vc: UIViewController)
     func showMessageAlert(_ message: String)
     func showErrorAlert(message: String)
     func showChoiceAlert(title: String? , message: String?, customActions: [UIAlertAction])
+    
 }
 
-class BreedViewController: UIViewController {
+class SubBreedsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    var presenter: BreedPresenterProtocol!
+    var presenter: SubBreedsPresenterProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = BreedPresenter(view: self)
+        
         setupViews()
+        presenter.getSubBreeds()
     }
     
     private func setupViews() {
@@ -45,13 +46,14 @@ class BreedViewController: UIViewController {
     }
     
     private func setupNavBar() {
-       self.title = "Breed"
+        self.title = presenter.breedName()
+        print(presenter.breedName())
     }
 }
 
-extension BreedViewController: UITableViewDataSource {
-    
+extension SubBreedsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(presenter.getCountItem())
         return presenter.getCountItem()
     }
     
@@ -62,15 +64,12 @@ extension BreedViewController: UITableViewDataSource {
     }
 }
 
-extension BreedViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let breed = presenter.breedResults[indexPath.row]
-        let subBreedsViewController = ModuleBuilder.createSubBreedModule(breed: breed)
-        pushToVC(subBreedsViewController)
-    }
+extension SubBreedsViewController: UITableViewDelegate {
+    
 }
 
-extension BreedViewController: BreedViewControllerProtocol {
+
+extension SubBreedsViewController: SubBreedsViewControllerProtocol {
     
     func startActivityIdicator() {
         DispatchQueue.main.async {
@@ -89,12 +88,5 @@ extension BreedViewController: BreedViewControllerProtocol {
             self.tableView.reloadData()
         }
     }
-    
-    func pushToVC(_ vc: UIViewController) {
-        DispatchQueue.main.async {
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-    }
 }
-
 

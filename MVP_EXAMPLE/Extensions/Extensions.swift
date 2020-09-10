@@ -9,6 +9,27 @@
 import UIKit
 import Foundation
 
+extension UIStoryboard {
+    
+    enum Storyboard {
+        case BreedViewController
+        case SubBreedsViewController
+        
+        var title: String {
+            return String(describing: self)
+        }
+    }
+    
+    convenience init(storyboard: Storyboard) {
+        self.init(name: storyboard.title, bundle: nil)
+    }
+    
+    func instantiateViewController<T: UIViewController>(_ type: T.Type) -> T {
+        let id = NSStringFromClass(T.self).components(separatedBy: ".").last!
+        return self.instantiateViewController(withIdentifier: id) as! T
+    }
+}
+
 extension UIView {
     
     class var identifier: String {
@@ -28,6 +49,15 @@ extension UITableView {
 
 
 extension UIViewController {
+    
+    class func instance(_ storyboard: UIStoryboard.Storyboard) -> Self {
+           
+           let storyboard = UIStoryboard(storyboard: storyboard)
+           let viewController = storyboard.instantiateViewController(self)
+           
+           return viewController
+    }
+    
     func showMessageAlert(_ message: String) {
         self.showAlert(title: nil, message: message, completion: {})
     }
@@ -56,6 +86,12 @@ extension UIViewController {
             self.present(alert, animated: true, completion: nil)
         }
     }
+}
+
+extension StringProtocol {
     
+    var firstUppercased: String {
+        return prefix(1).uppercased() + dropFirst()
+    }
 }
 

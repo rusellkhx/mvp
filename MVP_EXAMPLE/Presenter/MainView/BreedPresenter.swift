@@ -11,18 +11,22 @@ import UIKit
 protocol BreedPresenterProtocol: class {
     init(view: BreedViewControllerProtocol)
     func configurateCell(_ cell: BreedTableViewCellProtocol, item: Int)
+    //func pressCell(_ item: String)
     func getCountItem() -> Int
+    var dogBreed: [Breed]? { get }
+    var breedResults: [String] { get }
 }
 
 class BreedPresenter: BreedPresenterProtocol {
     
     let breedApi = BreedRequests()
-    var dogBreed: [Breed]!
+    var dogBreed: [Breed]?
     var breedResults: [String] = []
     var finalResult: [String : [String]] = ["":[""]]
     
+    
     private unowned let view: BreedViewControllerProtocol
-
+    
     required init(view: BreedViewControllerProtocol) {
         self.view = view
         getBreed()
@@ -41,8 +45,8 @@ class BreedPresenter: BreedPresenterProtocol {
             
             if let data = data as? [Breed] {
                 self.dogBreed = data
-                self.finalResult = self.dogBreed[0].message
-                let breedArray = self.dogBreed[0].message.keys.sorted()
+                self.finalResult = self.dogBreed![0].message
+                let breedArray = self.dogBreed![0].message.keys.sorted()
                 for type in breedArray {
                     self.breedResults.append(type)
                 }
@@ -65,8 +69,11 @@ class BreedPresenter: BreedPresenterProtocol {
         } else {
             cell.display(title: "\(breedResults[item].capitalized) (\(finalResult[breedResults[item]]?.count ?? 0) subbreeds)")
         }
-        
     }
+    
+    /*func pressCell(_ item: Int) {
+       
+    }*/
 }
 
 

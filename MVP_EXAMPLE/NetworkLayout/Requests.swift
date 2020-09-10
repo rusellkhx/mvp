@@ -9,8 +9,9 @@
 import Foundation
 
 struct Requests {
+    static let baseURL = "https://dog.ceo/api/"
+    static let prefixUrlListAll = "breeds/list/all"
     
-    static let baseURL = "https://dog.ceo/api/breeds/list/all"
     static let apiKeyValue = ""
     static let apiKeyTitle = ""
 }
