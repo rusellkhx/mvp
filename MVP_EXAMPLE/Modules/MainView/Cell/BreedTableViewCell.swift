@@ -18,10 +18,6 @@ class BreedTableViewCell: UITableViewCell {
 
 extension BreedTableViewCell: BreedTableViewCellProtocol {
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
     func display(title: String?) {
          titleLabel.text = title
     }

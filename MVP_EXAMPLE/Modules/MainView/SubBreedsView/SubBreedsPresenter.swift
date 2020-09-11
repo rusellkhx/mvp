@@ -19,9 +19,9 @@ protocol SubBreedsPresenterProtocol: class {
 class SubBreedsPresenter: SubBreedsPresenterProtocol {
    
     let breedApi = BreedRequests()
-    let breed: String
+    let breedForApi: String
     
-    var dogbreed = ""
+    var dogBreedForDescription = ""
     var dogBreed: [SubBreeeds]!
     var subBreedResults: [String] = []
     
@@ -29,7 +29,7 @@ class SubBreedsPresenter: SubBreedsPresenterProtocol {
     
     required init(view: SubBreedsViewControllerProtocol, breed: String) {
         self.view = view
-        self.breed = breed
+        self.breedForApi = breed
     }
     
     func getCountItem() -> Int {
@@ -38,7 +38,7 @@ class SubBreedsPresenter: SubBreedsPresenterProtocol {
     
     func getSubBreeds() {
         self.view.startActivityIdicator()
-        breedApi.getSubBreeds(breed: breed){ [weak self] (data, error) in
+        breedApi.getSubBreeds(breed: breedForApi){ [weak self] (data, error) in
             guard let self = self else { return }
             
             self.view.stopActivityIdicator()
@@ -49,7 +49,7 @@ class SubBreedsPresenter: SubBreedsPresenterProtocol {
             
             if let data = data as? [SubBreeeds] {
                 self.dogBreed = data
-                self.dogbreed = self.dogbreed.lowercased()
+                self.dogBreedForDescription = self.dogBreedForDescription.lowercased()
                 let subBreedArray = self.dogBreed[0].message
                 
                 for type in subBreedArray {
@@ -65,7 +65,7 @@ class SubBreedsPresenter: SubBreedsPresenterProtocol {
     }
     
     func breedName() -> String {
-        return self.dogbreed
+        return self.dogBreedForDescription
     }
        
        

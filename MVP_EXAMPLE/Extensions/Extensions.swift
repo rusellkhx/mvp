@@ -9,27 +9,6 @@
 import UIKit
 import Foundation
 
-extension UIStoryboard {
-    
-    enum Storyboard {
-        case BreedViewController
-        case SubBreedsViewController
-        
-        var title: String {
-            return String(describing: self)
-        }
-    }
-    
-    convenience init(storyboard: Storyboard) {
-        self.init(name: storyboard.title, bundle: nil)
-    }
-    
-    func instantiateViewController<T: UIViewController>(_ type: T.Type) -> T {
-        let id = NSStringFromClass(T.self).components(separatedBy: ".").last!
-        return self.instantiateViewController(withIdentifier: id) as! T
-    }
-}
-
 extension UIView {
     
     class var identifier: String {
@@ -47,16 +26,17 @@ extension UITableView {
     }
 }
 
+extension UICollectionView {
+    
+    func register<T: UICollectionViewCell>(_ cell: T.Type) {
+        self.register(UINib(nibName: T.identifier, bundle: nil), forCellWithReuseIdentifier: T.identifier)
+    }
+    func create<T: UICollectionViewCell>(_ cell: T.Type, _ indexPath: IndexPath) -> T {
+        return self.dequeueReusableCell(withReuseIdentifier: cell.identifier, for: indexPath) as! T
+    }
+}
 
 extension UIViewController {
-    
-    class func instance(_ storyboard: UIStoryboard.Storyboard) -> Self {
-           
-           let storyboard = UIStoryboard(storyboard: storyboard)
-           let viewController = storyboard.instantiateViewController(self)
-           
-           return viewController
-    }
     
     func showMessageAlert(_ message: String) {
         self.showAlert(title: nil, message: message, completion: {})

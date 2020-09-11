@@ -25,5 +25,14 @@ class BreedRequests: RestClient {
             self.response(data, error, modelCls: SubBreeeds.self, resp: resp)
         }
     }
+    
+    func getSubBreedImages(breed: String, resp: @escaping IdResponseBlock) {
+        let url = baseUrl + "breed/" + breed + "/images"
+        print(url)
+        http.queryByApiKey(url, queue: .defaultQos) { (data, error) in
+            self.response(data, error, modelCls: ImageBreed.self, resp: resp)
+        }
+    }
+    
 }
 

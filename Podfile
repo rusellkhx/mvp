@@ -7,5 +7,7 @@ target 'MVP_EXAMPLE' do
 
   # Pods for MVP_EXAMPLE
   pod 'Alamofire'
+  #pod 'RealmSwift', '~> 0.98'
+  pod 'Kingfisher'
 
 end
