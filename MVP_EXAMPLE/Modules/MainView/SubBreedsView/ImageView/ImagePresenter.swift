@@ -10,7 +10,7 @@ import Foundation
 
 protocol ImagePresenterProtocol: class {
     init(view: ImageViewControllerProtocol, breedNameForImages: String)
-    func configureCell(_ cell: ImageViewControllerProtocol, item: Int)
+    //func configureCell(_ cell: ImageViewControllerProtocol, item: Int)
     func getSubBreedImages()
     func getCountItem() -> Int
     func breedName() -> String
@@ -66,9 +66,9 @@ class ImagePresenter: ImagePresenterProtocol {
         return breedNameForImages.capitalized
     }
     
-    func configureCell(_ cell: ImageViewControllerProtocol, item: Int) {
+    /*func configureCell(_ cell: ImageViewControllerProtocol, item: Int) {
         ""
-    }
+    }*/
     
     
 }

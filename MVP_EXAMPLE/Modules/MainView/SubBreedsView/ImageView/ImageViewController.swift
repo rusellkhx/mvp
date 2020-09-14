@@ -35,8 +35,7 @@ class ImageViewController: UIViewController {
         collecView.register(ImageViewCell.self)
         collecView.dataSource = self
         collecView.delegate = self
-        //collecView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-        //collecView.decelerationRate = UIScrollView.DecelerationRate.fast
+
         let layout = UICollectionViewFlowLayout()
         layout.minimumInteritemSpacing = 0.0
         layout.minimumLineSpacing = 0.0
@@ -55,7 +54,6 @@ class ImageViewController: UIViewController {
     private func setupViews() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"),style: .plain, target: self, action: nil)
         self.navigationItem.title = "\(presenter.breedName())"
-        print("\(presenter.breedName())")
         setupCollectionView()
         activityIndicator.center = self.view.center
         startActivityIdicator()

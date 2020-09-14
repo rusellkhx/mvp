@@ -39,7 +39,7 @@ class SubBreedsPresenter: SubBreedsPresenterProtocol {
     
     func getSubBreeds() {
         self.view.startActivityIdicator()
-        breedApi.getSubBreeds(breed: breedForApi){ [weak self] (data, error) in
+        breedApi.getSubBreeds(breed: breedForApi) { [weak self] (data, error) in
             guard let self = self else { return }
             
             self.view.stopActivityIdicator()
@@ -72,7 +72,7 @@ class SubBreedsPresenter: SubBreedsPresenterProtocol {
     func pressCell(_ item: Int) {
         let breed = subBreedResults[item]
         
-        let imageBreedViewController = ModuleBuilder.createImageBreedModule(breedNameForImages: breed)
+        let imageBreedViewController = ModuleBuilder.createImageBreedModule(breedNameForImages: "\(breedForApi)/\(breed)")
         self.view.pushToVC(imageBreedViewController)
         
     }

@@ -89,9 +89,10 @@ class BreedPresenter: BreedPresenterProtocol {
     
     func pressCell(_ item: Int) {
         let breed = result[item].breed
-        let subreed = result[item].subbreed.count == 0
+        let subBreed = result[item].subbreed
+        let countSubBreed = result[item].subbreed.count == 0
         
-        if subreed {
+        if countSubBreed {
             let imageBreedViewController = ModuleBuilder.createImageBreedModule(breedNameForImages: breed)
             self.view.pushToVC(imageBreedViewController)
         } else {
