@@ -32,10 +32,10 @@ class SubBreedsViewController: UIViewController {
     }
     
     private func setupViews() {
+        setupNavBar()
         setupTableView()
         activityIndicator.center = self.view.center
         startActivityIdicator()
-        setupNavBar()
     }
     
     private func setupTableView() {

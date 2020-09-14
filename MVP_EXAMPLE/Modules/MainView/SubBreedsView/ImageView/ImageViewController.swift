@@ -52,17 +52,16 @@ class ImageViewController: UIViewController {
     }
     
     private func setupViews() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"),style: .plain, target: self, action: nil)
-        self.navigationItem.title = "\(presenter.breedName())"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"),style: .plain, target: self, action: nil)
+        setupNavBar()
         setupCollectionView()
         activityIndicator.center = self.view.center
         startActivityIdicator()
-        setupNavBar()
+        
     }
     
     private func setupNavBar() {
-        
-        //self.navigationItem.title = presenter.breedName()
+        title = presenter.breedName()
     }
 }
 
