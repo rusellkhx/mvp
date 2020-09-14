@@ -11,13 +11,14 @@ import UIKit
 protocol SubBreedsPresenterProtocol: class {
     init(view: SubBreedsViewControllerProtocol, breed: String)
     func configurateCell(_ cell: BreedTableViewCellProtocol, item: Int)
+    func pressCell(_ item: Int)
     func getSubBreeds()
     func getCountItem() -> Int
     func breedName() -> String
 }
 
 class SubBreedsPresenter: SubBreedsPresenterProtocol {
-   
+    
     let breedApi = BreedRequests()
     let breedForApi: String
     
@@ -67,6 +68,12 @@ class SubBreedsPresenter: SubBreedsPresenterProtocol {
     func breedName() -> String {
         return self.dogBreedForDescription
     }
-       
-       
+    
+    func pressCell(_ item: Int) {
+        let breed = subBreedResults[item]
+        
+        let imageBreedViewController = ModuleBuilder.createImageBreedModule(breedNameForImages: breed)
+        self.view.pushToVC(imageBreedViewController)
+        
+    }
 }

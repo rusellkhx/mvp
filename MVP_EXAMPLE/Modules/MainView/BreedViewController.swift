@@ -64,9 +64,7 @@ extension BreedViewController: UITableViewDataSource {
 
 extension BreedViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let breed = presenter.breedResults[indexPath.row]
-        let subBreedsViewController = ModuleBuilder.createSubBreedModule(breed: breed)
-        pushToVC(subBreedsViewController)
+        presenter.pressCell(indexPath.row)
     }
 }
 

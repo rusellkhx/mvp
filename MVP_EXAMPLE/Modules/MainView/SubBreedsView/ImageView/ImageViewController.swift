@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 protocol ImageViewControllerProtocol: class {
     func startActivityIdicator()
@@ -34,9 +35,27 @@ class ImageViewController: UIViewController {
         collecView.register(ImageViewCell.self)
         collecView.dataSource = self
         collecView.delegate = self
+        //collecView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        //collecView.decelerationRate = UIScrollView.DecelerationRate.fast
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumInteritemSpacing = 0.0
+        layout.minimumLineSpacing = 0.0
+        layout.itemSize = UIScreen.main.bounds.size
+        layout.scrollDirection = UICollectionView.ScrollDirection.horizontal
+        
+        collecView.contentInsetAdjustmentBehavior = .never
+        collecView.collectionViewLayout = layout
+        collecView.backgroundColor = .systemBackground
+        
+        collecView.showsVerticalScrollIndicator = false
+        collecView.showsHorizontalScrollIndicator = false
+        collecView.isPagingEnabled = true
     }
     
     private func setupViews() {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"),style: .plain, target: self, action: nil)
+        self.navigationItem.title = "\(presenter.breedName())"
+        print("\(presenter.breedName())")
         setupCollectionView()
         activityIndicator.center = self.view.center
         startActivityIdicator()
@@ -44,7 +63,8 @@ class ImageViewController: UIViewController {
     }
     
     private func setupNavBar() {
-        title = presenter.breedName()
+        
+        //self.navigationItem.title = presenter.breedName()
     }
 }
 
@@ -55,7 +75,10 @@ extension ImageViewController: UICollectionViewDataSource, UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
+        let cell = collecView.create(ImageViewCell.self, indexPath)
+        let image: String = presenter.subBreedResults[indexPath.row]
+        cell.breedImageView.kf.setImage(with: URL(string: image), placeholder: UIImage(named: ""))
+        return cell
     }
 }
 

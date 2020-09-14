@@ -11,10 +11,12 @@ import UIKit
 protocol BreedPresenterProtocol: class {
     init(view: BreedViewControllerProtocol)
     func configurateCell(_ cell: BreedTableViewCellProtocol, item: Int)
-    //func pressCell(_ item: String)
+    func pressCell(_ item: Int)
     func getCountItem() -> Int
     var dogBreed: [Breed]? { get }
+    func getCountSubreed() -> Int
     var breedResults: [String] { get }
+    //var result: [DogModel]? { get }
 }
 
 class BreedPresenter: BreedPresenterProtocol {
@@ -23,7 +25,8 @@ class BreedPresenter: BreedPresenterProtocol {
     var dogBreed: [Breed]?
     var breedResults: [String] = []
     var finalResult: [String : [String]] = ["":[""]]
-    
+    var count = 0
+    var result: [DogModel]!
     
     private unowned let view: BreedViewControllerProtocol
     
@@ -45,8 +48,17 @@ class BreedPresenter: BreedPresenterProtocol {
             
             if let data = data as? [Breed] {
                 self.dogBreed = data
+                var result: [DogModel] = []
+                
                 self.finalResult = self.dogBreed![0].message
-                let breedArray = self.dogBreed![0].message.keys.sorted()
+                let breedArray = self.dogBreed![0].message.keys
+                for (key, value) in self.finalResult {
+                    let model = DogModel(breed: key, subbreed: value)
+                    print(key, value)
+                    result.append(model)
+                }
+                self.result = result
+                
                 for type in breedArray {
                     self.breedResults.append(type)
                 }
@@ -71,9 +83,22 @@ class BreedPresenter: BreedPresenterProtocol {
         }
     }
     
-    /*func pressCell(_ item: Int) {
-       
-    }*/
+    func getCountSubreed() -> Int {
+        return count
+    }
+    
+    func pressCell(_ item: Int) {
+        let breed = result[item].breed
+        let subreed = result[item].subbreed.count == 0
+        
+        if subreed {
+            let imageBreedViewController = ModuleBuilder.createImageBreedModule(breedNameForImages: breed)
+            self.view.pushToVC(imageBreedViewController)
+        } else {
+            let subBreedsViewController = ModuleBuilder.createSubBreedModule(breed: breed)
+            self.view.pushToVC(subBreedsViewController)
+        }
+    }
 }
 
 

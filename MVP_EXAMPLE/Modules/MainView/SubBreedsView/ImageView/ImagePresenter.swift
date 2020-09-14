@@ -10,17 +10,18 @@ import Foundation
 
 protocol ImagePresenterProtocol: class {
     init(view: ImageViewControllerProtocol, breedNameForImages: String)
-    //func configurateCell(_ cell: BreedTableViewCellProtocol, item: Int)
+    func configureCell(_ cell: ImageViewControllerProtocol, item: Int)
     func getSubBreedImages()
     func getCountItem() -> Int
     func breedName() -> String
+    var subBreedResults: [String] { get }
 }
 
 class ImagePresenter: ImagePresenterProtocol {
-    
+
     let breedApi = BreedRequests()
     
-    var dogBreedForDescription = ""
+    //var dogBreedForDescription = ""
     var breedNameForImages: String
     var imageBreed: [ImageBreed]!
     var subBreedResults: [String] = []
@@ -34,7 +35,7 @@ class ImagePresenter: ImagePresenterProtocol {
 
     func getSubBreedImages() {
         self.view.startActivityIdicator()
-        breedApi.getSubBreeds(breed: breedNameForImages){ [weak self] (data, error) in
+        breedApi.getSubBreedImages(breed: breedNameForImages){ [weak self] (data, error) in
             guard let self = self else { return }
             
             self.view.stopActivityIdicator()
@@ -45,12 +46,13 @@ class ImagePresenter: ImagePresenterProtocol {
             
             if let data = data as? [ImageBreed] {
                 self.imageBreed = data
-                self.dogBreedForDescription = self.dogBreedForDescription.lowercased()
+                //self.dogBreedForDescription = self.dogBreedForDescription.lowercased()
                 let subBreedArray = self.imageBreed[0].message
                 
                 for type in subBreedArray {
                     self.subBreedResults.append(type)
                 }
+                print(self.subBreedResults)
                 self.view.reloadCollection()
             }
         }
@@ -61,7 +63,13 @@ class ImagePresenter: ImagePresenterProtocol {
     }
     
     func breedName() -> String {
-        return self.dogBreedForDescription
+        return breedNameForImages.capitalized
     }
+    
+    func configureCell(_ cell: ImageViewControllerProtocol, item: Int) {
+        ""
+    }
+    
+    
 }
 

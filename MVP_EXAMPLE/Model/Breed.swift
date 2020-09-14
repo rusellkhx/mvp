@@ -28,6 +28,29 @@ struct ImageBreed: Codable {
     let message: [String]
 }
 
+public class ImageModel {
+    
+    var url: URL
+    var isFavorite: Bool
+
+    init(url: URL, isFavorite: Bool) {
+        self.url = url
+        self.isFavorite = isFavorite
+    }
+}
+
+public class DogModel {
+    
+    var breed: String
+    var subbreed: [String]
+
+    init(breed: String, subbreed: [String]) {
+        self.breed = breed
+        self.subbreed = subbreed
+    }
+}
+
+
 /*class Dog: Object {
  @objc dynamic var breed: String? = nil
  @objc dynamic var image: String? = nil

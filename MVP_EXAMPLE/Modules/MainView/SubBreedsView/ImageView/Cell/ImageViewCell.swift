@@ -7,37 +7,33 @@
 //
 
 import UIKit
+import Kingfisher
 
-class Cell: UICollectionViewCell {
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+class BaseCell: UICollectionViewCell {
+
+    required init?(coder aDecoder: NSCoder) {
+       super.init(coder: aDecoder)
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+
+    func setupViews() {
     }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.setupView()
-    }
-    
-    func setupView() { }
 }
 
-class ImageViewCell: Cell {
+class ImageViewCell: BaseCell {
     
     @IBOutlet weak var conView: UIView!
     @IBOutlet weak var breedImageView: UIImageView!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
     
-    override func setupView() {
-        addSubview(conView)
+    override func setupViews() {
+        
+        addSubview(breedImageView)
         addSubview(likeButton)
-        breedImageView.contentMode = .scaleAspectFill
+        breedImageView.contentMode = .center
         breedImageView.clipsToBounds = true
         
     }
+    
 }
+

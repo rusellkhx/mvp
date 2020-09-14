@@ -15,6 +15,7 @@ protocol SubBreedsViewControllerProtocol: class {
     func showMessageAlert(_ message: String)
     func showErrorAlert(message: String)
     func showChoiceAlert(title: String? , message: String?, customActions: [UIAlertAction])
+    func pushToVC(_ vc: UIViewController)
 }
 
 class SubBreedsViewController: UIViewController {
@@ -61,7 +62,9 @@ extension SubBreedsViewController: UITableViewDataSource {
 }
 
 extension SubBreedsViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.pressCell(indexPath.row)
+    }
 }
 
 extension SubBreedsViewController: SubBreedsViewControllerProtocol {
@@ -83,5 +86,11 @@ extension SubBreedsViewController: SubBreedsViewControllerProtocol {
             self.tableView.reloadData()
         }
     }
+    
+    func pushToVC(_ vc: UIViewController) {
+           DispatchQueue.main.async {
+               self.navigationController?.pushViewController(vc, animated: true)
+           }
+       }
 }
 
