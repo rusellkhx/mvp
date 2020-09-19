@@ -10,7 +10,6 @@ import Foundation
 
 protocol ImagePresenterProtocol: class {
     init(view: ImageViewControllerProtocol, breedNameForImages: String)
-    //func configureCell(_ cell: ImageViewControllerProtocol, item: Int)
     func getSubBreedImages()
     func getCountItem() -> Int
     func breedName() -> String
@@ -21,7 +20,6 @@ class ImagePresenter: ImagePresenterProtocol {
 
     let breedApi = BreedRequests()
     
-    //var dogBreedForDescription = ""
     var breedNameForImages: String
     var imageBreed: [ImageBreed]!
     var subBreedResults: [String] = []
@@ -46,13 +44,11 @@ class ImagePresenter: ImagePresenterProtocol {
             
             if let data = data as? [ImageBreed] {
                 self.imageBreed = data
-                //self.dogBreedForDescription = self.dogBreedForDescription.lowercased()
                 let subBreedArray = self.imageBreed[0].message
                 
                 for type in subBreedArray {
                     self.subBreedResults.append(type)
                 }
-                print(self.subBreedResults)
                 self.view.reloadCollection()
             }
         }
@@ -65,11 +61,5 @@ class ImagePresenter: ImagePresenterProtocol {
     func breedName() -> String {
         return breedNameForImages.capitalized
     }
-    
-    /*func configureCell(_ cell: ImageViewControllerProtocol, item: Int) {
-        ""
-    }*/
-    
-    
 }
 

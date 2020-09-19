@@ -14,9 +14,6 @@ protocol BreedPresenterProtocol: class {
     func pressCell(_ item: Int)
     func getCountItem() -> Int
     var dogBreed: [Breed]? { get }
-    func getCountSubreed() -> Int
-    var breedResults: [String] { get }
-    //var result: [DogModel]? { get }
 }
 
 class BreedPresenter: BreedPresenterProtocol {
@@ -25,7 +22,7 @@ class BreedPresenter: BreedPresenterProtocol {
     var dogBreed: [Breed]?
     var breedResults: [String] = []
     var finalResult: [String : [String]] = ["":[""]]
-    var count = 0
+    
     var result: [DogModel]!
     
     private unowned let view: BreedViewControllerProtocol
@@ -83,13 +80,8 @@ class BreedPresenter: BreedPresenterProtocol {
         }
     }
     
-    func getCountSubreed() -> Int {
-        return count
-    }
-    
     func pressCell(_ item: Int) {
         let breed = result[item].breed
-        let subBreed = result[item].subbreed
         let countSubBreed = result[item].subbreed.count == 0
         
         if countSubBreed {
