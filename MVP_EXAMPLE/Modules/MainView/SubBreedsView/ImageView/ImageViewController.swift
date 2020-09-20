@@ -16,6 +16,7 @@ protocol ImageViewControllerProtocol: class {
     func showMessageAlert(_ message: String)
     func showErrorAlert(message: String)
     func showChoiceAlert(title: String? , message: String?, customActions: [UIAlertAction])
+    
 }
 
 class ImageViewController: UIViewController {
@@ -33,30 +34,34 @@ class ImageViewController: UIViewController {
     }
     
     private func setupCollectionView() {
+
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        
+        layout.minimumLineSpacing = 0.0
+        layout.minimumInteritemSpacing = 0.0
+        //layout.minimumInteritemSpacing = Constants.galleryMinimumLineSpacing
+        
+        layout.itemSize = UIScreen.main.bounds.size
+        //layout.estimatedItemSize = CGSize(width: 300, height: 300)
+        
+        //collecView.contentInset = UIEdgeInsets(top: 50, left: 16, bottom: 50, right: 16)
         collecView.register(ImageViewCell.self)
         collecView.dataSource = self
         collecView.delegate = self
-        
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumInteritemSpacing = 0.0
-        layout.minimumLineSpacing = 0.0
-        layout.itemSize = UIScreen.main.bounds.size
-        //layout.estimatedItemSize = CGSize(width: 300, height: 300)
-        layout.scrollDirection = UICollectionView.ScrollDirection.horizontal
-        
-        
-        collecView.contentInsetAdjustmentBehavior = .never
         collecView.collectionViewLayout = layout
+        //collecView.contentInsetAdjustmentBehavior = .never
+        
         collecView.backgroundColor = .systemBackground
         
         collecView.showsVerticalScrollIndicator = false
         collecView.showsHorizontalScrollIndicator = false
         collecView.isPagingEnabled = true
+        
     }
     
     private func setupViews() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"),
-                                                            
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: HelperDescriptionImages.Navigation.sharePhoto),
                                                             style: .plain,
                                                             target: self,
                                                             action: #selector(openAlert))
@@ -81,12 +86,13 @@ extension ImageViewController: UICollectionViewDataSource, UICollectionViewDeleg
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collecView.create(ImageViewCell.self, indexPath)
         page = indexPath.row
-        print(page)
-        let image: String = presenter.subBreedResults[indexPath.row]
+        //print(page)
+        let image: String = presenter.subBreedResults[indexPath.row] 
         
         cell.breedImageView.kf.setImage(with: URL(string: image), placeholder: UIImage(named: ""))
         return cell
     }
+
 }
 
 extension ImageViewController: ImageViewControllerProtocol {
@@ -131,11 +137,7 @@ extension ImageViewController {
     }
     
     func sharePhoto() {
-        
-        if let photoURL = [presenter.breedName(), presenter.subBreedResults[page - 1]] as? [Any] {
-            print(photoURL)
-            print(presenter.subBreedResults[page])
-            
+        if let photoURL = [presenter.subBreedResults[page - 1]] as? [Any] {
             let activityVC = UIActivityViewController(activityItems: photoURL, applicationActivities: nil)
             
             activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.message]
@@ -144,6 +146,4 @@ extension ImageViewController {
             self.present(activityVC, animated: true, completion: nil)
         }
     }
-    
-    
 }

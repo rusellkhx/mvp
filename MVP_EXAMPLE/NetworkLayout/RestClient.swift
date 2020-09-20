@@ -14,7 +14,7 @@ class RestClient: NSObject {
     internal var http = HttpService()
     internal let baseUrl = Requests.baseURL
     
-    let dataIsNil = CustomError.init(localizedDescription: "Houston we have a problem", code: 0)
+    let dataIsNil = CustomError.init(localizedDescription: HelperDescriptionImages.Message.someServerError, code: 0)
     
     func response<T: Codable>(_ response: Any?, _ error: Error?, modelCls: T.Type, key: String? = nil, resp: @escaping IdResponseBlock) {
         

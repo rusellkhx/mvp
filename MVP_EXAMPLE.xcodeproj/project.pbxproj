@@ -33,6 +33,8 @@
 		4251C8CA24FF7D8C00D3EF94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4251C8C824FF7D8C00D3EF94 /* Main.storyboard */; };
 		4251C8CC24FF7D8D00D3EF94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4251C8CB24FF7D8D00D3EF94 /* Assets.xcassets */; };
 		4251C8CF24FF7D8D00D3EF94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4251C8CD24FF7D8D00D3EF94 /* LaunchScreen.storyboard */; };
+		428F61C32517849500A1EADF /* HelperDescriptionImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428F61C22517849500A1EADF /* HelperDescriptionImages.swift */; };
+		428F61C625178B8200A1EADF /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428F61C525178B8200A1EADF /* Utils.swift */; };
 		42BE6B64250BB0B700CCF496 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BE6B63250BB0B700CCF496 /* ImageViewController.swift */; };
 		42BE6B66250BB0CA00CCF496 /* ImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42BE6B65250BB0CA00CCF496 /* ImageViewController.xib */; };
 		42BE6B68250BB1B300CCF496 /* ImagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BE6B67250BB1B300CCF496 /* ImagePresenter.swift */; };
@@ -69,6 +71,8 @@
 		4251C8CB24FF7D8D00D3EF94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4251C8CE24FF7D8D00D3EF94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4251C8D024FF7D8D00D3EF94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		428F61C22517849500A1EADF /* HelperDescriptionImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperDescriptionImages.swift; sourceTree = "<group>"; };
+		428F61C525178B8200A1EADF /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		42BE6B63250BB0B700CCF496 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		42BE6B65250BB0CA00CCF496 /* ImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageViewController.xib; sourceTree = "<group>"; };
 		42BE6B67250BB1B300CCF496 /* ImagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePresenter.swift; sourceTree = "<group>"; };
@@ -121,6 +125,8 @@
 			isa = PBXGroup;
 			children = (
 				42183CF425060E1500087236 /* Extensions.swift */,
+				428F61C22517849500A1EADF /* HelperDescriptionImages.swift */,
+				428F61C525178B8200A1EADF /* Utils.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -269,7 +275,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1160;
-				LastUpgradeCheck = 1160;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = RusellKh;
 				TargetAttributes = {
 					4251C8BE24FF7D8C00D3EF94 = {
@@ -368,6 +374,7 @@
 				42150D6E2504C9A400EFDE62 /* Requests.swift in Sources */,
 				422EF93425079F4B00C3174B /* BuilderModule.swift in Sources */,
 				4251C8C724FF7D8C00D3EF94 /* BreedViewController.swift in Sources */,
+				428F61C625178B8200A1EADF /* Utils.swift in Sources */,
 				422EF93F2507C02100C3174B /* SubBreedsViewController.swift in Sources */,
 				42183CEE250552F400087236 /* BreedTableViewCell.swift in Sources */,
 				4250F1602505301800E57761 /* RestClient.swift in Sources */,
@@ -375,6 +382,7 @@
 				424AD425250B7911004DADA7 /* ImageViewCell.swift in Sources */,
 				42183CF525060E1500087236 /* Extensions.swift in Sources */,
 				4250F15E25052A4600E57761 /* BreedRequests.swift in Sources */,
+				428F61C32517849500A1EADF /* HelperDescriptionImages.swift in Sources */,
 				4251C8C324FF7D8C00D3EF94 /* AppDelegate.swift in Sources */,
 				4216944824FF9DCC007A5A97 /* InternetService.swift in Sources */,
 				422EF9382507AEF400C3174B /* FavouritesViewController.swift in Sources */,
@@ -432,6 +440,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -492,6 +501,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

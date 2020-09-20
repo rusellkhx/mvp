@@ -21,18 +21,17 @@ class BaseCell: UICollectionViewCell {
 
 class ImageViewCell: BaseCell {
     
-    @IBOutlet weak var conView: UIView!
+    //@IBOutlet weak var conView: UIView!
     @IBOutlet weak var breedImageView: UIImageView!
     @IBOutlet weak var likeButton: UIButton!
-    @IBOutlet weak var shareButton: UIButton!
     
     override func setupViews() {
         
         addSubview(breedImageView)
         addSubview(likeButton)
         breedImageView.contentMode = .center
+        breedImageView.contentMode = .scaleAspectFill
         breedImageView.clipsToBounds = true
-        
     }
     
 }

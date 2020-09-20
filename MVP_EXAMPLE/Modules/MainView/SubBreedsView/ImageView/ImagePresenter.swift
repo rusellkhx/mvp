@@ -22,7 +22,7 @@ class ImagePresenter: ImagePresenterProtocol {
     
     var breedNameForImages: String
     var imageBreed: [ImageBreed]!
-    var subBreedResults: [String] = []
+    var subBreedResults = [String] ()
     
     private unowned let view: ImageViewControllerProtocol
     
@@ -61,5 +61,6 @@ class ImagePresenter: ImagePresenterProtocol {
     func breedName() -> String {
         return breedNameForImages.capitalized
     }
+    
 }
 

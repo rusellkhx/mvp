@@ -39,22 +39,22 @@ class HttpService {
     }
     
     func internetConnectErr() -> CustomError {
-        return CustomError(localizedDescription: "No internet connection!",
+        return CustomError(localizedDescription: HelperDescriptionImages.Message.noInternetConnection,
                            code: 402)
     }
     
     func serverError() -> CustomError {
-        return CustomError(localizedDescription: "Server error!",
+        return CustomError(localizedDescription: HelperDescriptionImages.Message.serverEror,
                            code: 500)
     }
     
     func serverSomthWrongError() -> CustomError {
-        return CustomError(localizedDescription: "Some server error!",
+        return CustomError(localizedDescription: HelperDescriptionImages.Message.someServerError,
                            code: 500)
     }
     
     func requestError(_ description: String?, _ error: Int?) -> CustomError {
-        return CustomError(localizedDescription: description ?? "Reqest error",
+        return CustomError(localizedDescription: description ?? HelperDescriptionImages.Message.reqestError,
                            code: error ?? 404)
     }
     

@@ -56,7 +56,7 @@ extension UIViewController {
             let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
             
             if customActions.isEmpty {
-                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {action in completion()}))
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in completion()}))
             } else {
                 for action in customActions {
                     alert.addAction(action)
