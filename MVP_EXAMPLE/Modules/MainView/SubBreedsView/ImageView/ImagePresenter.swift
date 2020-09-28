@@ -11,6 +11,7 @@ import Foundation
 protocol ImagePresenterProtocol: class {
     init(view: ImageViewControllerProtocol, breedNameForImages: String)
     func getSubBreedImages()
+    //func saveImage()
     func getCountItem() -> Int
     func breedName() -> String
     var subBreedResults: [String] { get }
@@ -19,6 +20,7 @@ protocol ImagePresenterProtocol: class {
 class ImagePresenter: ImagePresenterProtocol {
 
     let breedApi = BreedRequests()
+    //let serviceStorage = StorageService()
     
     var breedNameForImages: String
     var imageBreed: [ImageBreed]!

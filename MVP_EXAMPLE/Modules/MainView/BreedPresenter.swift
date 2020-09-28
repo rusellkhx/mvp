@@ -14,6 +14,7 @@ protocol BreedPresenterProtocol: class {
     func pressCell(_ item: Int)
     func getCountItem() -> Int
     var dogBreed: [Breed]? { get }
+    func getBreed()
 }
 
 class BreedPresenter: BreedPresenterProtocol {
@@ -29,10 +30,9 @@ class BreedPresenter: BreedPresenterProtocol {
     
     required init(view: BreedViewControllerProtocol) {
         self.view = view
-        getBreed()
     }
     
-    private func getBreed() {
+    func getBreed() {
         self.view.startActivityIdicator()
         breedApi.getBreed(){ [weak self] (data, error) in
             guard let self = self else { return }

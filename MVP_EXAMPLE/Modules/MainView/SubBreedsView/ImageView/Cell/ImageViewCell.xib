@@ -46,7 +46,7 @@
             <size key="customSize" width="528" height="280"/>
             <connections>
                 <outlet property="breedImageView" destination="50B-3q-krF" id="74t-AV-Z2M"/>
-                <outlet property="likeButton" destination="Rya-Mb-cPz" id="sxE-Nb-Xbr"/>
+                <outlet property="likeButton" destination="Rya-Mb-cPz" id="Vpy-bl-Ifb"/>
             </connections>
             <point key="canvasLocation" x="-92.753623188405811" y="-28.125"/>
         </collectionViewCell>

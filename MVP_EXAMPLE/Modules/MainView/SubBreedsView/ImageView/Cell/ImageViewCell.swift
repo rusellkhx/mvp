@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 class BaseCell: UICollectionViewCell {
 
@@ -21,7 +20,6 @@ class BaseCell: UICollectionViewCell {
 
 class ImageViewCell: BaseCell {
     
-    //@IBOutlet weak var conView: UIView!
     @IBOutlet weak var breedImageView: UIImageView!
     @IBOutlet weak var likeButton: UIButton!
     
@@ -32,7 +30,7 @@ class ImageViewCell: BaseCell {
         breedImageView.contentMode = .center
         breedImageView.contentMode = .scaleAspectFill
         breedImageView.clipsToBounds = true
+        
     }
-    
 }
 

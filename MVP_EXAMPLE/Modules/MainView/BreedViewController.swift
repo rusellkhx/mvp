@@ -27,9 +27,15 @@ class BreedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = BreedPresenter(view: self)
+        //presenter = BreedPresenter(view: self)
+        presenter.getBreed()
         setupViews()
     }
+    
+   /* override func viewWillAppear(_ animated: Bool) {
+        presenter = BreedPresenter(view: self)
+        setupViews()
+    }*/
     
     private func setupViews() {
         setupNavBar()

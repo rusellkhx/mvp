@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import RealmSwift
 
 protocol ImageViewControllerProtocol: class {
     func startActivityIdicator()
@@ -24,8 +25,11 @@ class ImageViewController: UIViewController {
     @IBOutlet weak var collecView: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    let serviceStorage = StorageService()
     var presenter: ImagePresenterProtocol!
     var page = 0
+    let realm = try! Realm()
+    var dogs = Dog()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,27 +41,18 @@ class ImageViewController: UIViewController {
 
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        
         layout.minimumLineSpacing = 0.0
         layout.minimumInteritemSpacing = 0.0
-        //layout.minimumInteritemSpacing = Constants.galleryMinimumLineSpacing
-        
         layout.itemSize = UIScreen.main.bounds.size
-        //layout.estimatedItemSize = CGSize(width: 300, height: 300)
         
-        //collecView.contentInset = UIEdgeInsets(top: 50, left: 16, bottom: 50, right: 16)
         collecView.register(ImageViewCell.self)
         collecView.dataSource = self
         collecView.delegate = self
         collecView.collectionViewLayout = layout
-        //collecView.contentInsetAdjustmentBehavior = .never
-        
         collecView.backgroundColor = .systemBackground
-        
         collecView.showsVerticalScrollIndicator = false
         collecView.showsHorizontalScrollIndicator = false
         collecView.isPagingEnabled = true
-        
     }
     
     private func setupViews() {
@@ -85,12 +80,33 @@ extension ImageViewController: UICollectionViewDataSource, UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collecView.create(ImageViewCell.self, indexPath)
+        
         page = indexPath.row
-        //print(page)
+        print("------")
+        print(page)
+        print("------")
+        print(page - 1)
         let image: String = presenter.subBreedResults[indexPath.row] 
         
         cell.breedImageView.kf.setImage(with: URL(string: image), placeholder: UIImage(named: ""))
+        cell.likeButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+
         return cell
+    }
+    
+    @objc func buttonPressed()
+    {
+        /*let dog = Dog()
+        dog.breed = presenter.breedName()
+        dog.image = presenter.subBreedResults[page]
+        dog.hasFavourited = true
+        
+        try! self.realm.write {
+            self.realm.add(dog)
+        }*/
+        
+        serviceStorage.changePhotoStatus(presenter.breedName(), presenter.subBreedResults[page])
+        //print("Save Dog name:\(String(describing: dog.breed)), image: \(String(describing: dog.image)), hasFavourited:\(dog.hasFavourited)")
     }
 
 }

@@ -21,7 +21,4 @@ struct HelperDescriptionImages {
         static let titleBreeeds = "Breeds"
         static let sharePhoto = "square.and.arrow.up"
     }
-    
-    
-    
 }

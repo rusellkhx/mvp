@@ -14,6 +14,7 @@
 		42183CEE250552F400087236 /* BreedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42183CED250552F400087236 /* BreedTableViewCell.swift */; };
 		42183CF2250554BA00087236 /* BreedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42183CF1250554BA00087236 /* BreedTableViewCell.xib */; };
 		42183CF525060E1500087236 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42183CF425060E1500087236 /* Extensions.swift */; };
+		422646C42522516D00F4C973 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422646C32522516D00F4C973 /* StorageService.swift */; };
 		422EF93225079E8800C3174B /* BreedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 422EF93125079E8800C3174B /* BreedViewController.xib */; };
 		422EF93425079F4B00C3174B /* BuilderModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EF93325079F4B00C3174B /* BuilderModule.swift */; };
 		422EF9382507AEF400C3174B /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422EF9372507AEF400C3174B /* FavouritesViewController.swift */; };
@@ -50,6 +51,7 @@
 		42183CED250552F400087236 /* BreedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedTableViewCell.swift; sourceTree = "<group>"; };
 		42183CF1250554BA00087236 /* BreedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BreedTableViewCell.xib; sourceTree = "<group>"; };
 		42183CF425060E1500087236 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		422646C32522516D00F4C973 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		422EF93125079E8800C3174B /* BreedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BreedViewController.xib; sourceTree = "<group>"; };
 		422EF93325079F4B00C3174B /* BuilderModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuilderModule.swift; sourceTree = "<group>"; };
 		422EF9372507AEF400C3174B /* FavouritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +166,13 @@
 			path = SubBreedsView;
 			sourceTree = "<group>";
 		};
+		4231C5B4251900D700E90C4E /* ModulesBuilder */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ModulesBuilder;
+			sourceTree = "<group>";
+		};
 		424AD422250B700D004DADA7 /* ImageView */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,10 +224,12 @@
 			isa = PBXGroup;
 			children = (
 				422EF93325079F4B00C3174B /* BuilderModule.swift */,
+				4231C5B4251900D700E90C4E /* ModulesBuilder */,
 				42183CF325060DFF00087236 /* Extensions */,
 				4250F1612505308900E57761 /* Modules */,
 				42150D6F2504CA6F00EFDE62 /* Model */,
 				4216944424FF9985007A5A97 /* NetworkLayout */,
+				42E264BD251C8EC700CF7A35 /* StorageLayout */,
 				4251C8C224FF7D8C00D3EF94 /* AppDelegate.swift */,
 				4251C8C424FF7D8C00D3EF94 /* SceneDelegate.swift */,
 				4251C8C824FF7D8C00D3EF94 /* Main.storyboard */,
@@ -227,6 +238,14 @@
 				4251C8D024FF7D8D00D3EF94 /* Info.plist */,
 			);
 			path = MVP_EXAMPLE;
+			sourceTree = "<group>";
+		};
+		42E264BD251C8EC700CF7A35 /* StorageLayout */ = {
+			isa = PBXGroup;
+			children = (
+				422646C32522516D00F4C973 /* StorageService.swift */,
+			);
+			path = StorageLayout;
 			sourceTree = "<group>";
 		};
 		56C0FE8A8088ECE6A641CE25 /* Frameworks */ = {
@@ -368,6 +387,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42150D712504CA8900EFDE62 /* Breed.swift in Sources */,
+				422646C42522516D00F4C973 /* StorageService.swift in Sources */,
 				4250F163250530AE00E57761 /* BreedPresenter.swift in Sources */,
 				42BE6B68250BB1B300CCF496 /* ImagePresenter.swift in Sources */,
 				4216944624FF9CCA007A5A97 /* HttpService.swift in Sources */,
@@ -465,7 +485,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -520,7 +540,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -538,7 +558,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MX627F9AXS;
 				INFOPLIST_FILE = MVP_EXAMPLE/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -558,7 +578,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MX627F9AXS;
 				INFOPLIST_FILE = MVP_EXAMPLE/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
