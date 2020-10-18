@@ -7,6 +7,12 @@
 //
 
 import UIKit
+import Kingfisher
+
+protocol ImageViewCellProtocol {
+    func configureCell(imageURL: String?, isFavourite: Bool)
+}
+
 
 class BaseCell: UICollectionViewCell {
 
@@ -22,8 +28,9 @@ class ImageViewCell: BaseCell {
     
     @IBOutlet weak var breedImageView: UIImageView!
     @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    override func setupViews() {
+    /*override func setupViews() {
         
         addSubview(breedImageView)
         addSubview(likeButton)
@@ -31,6 +38,34 @@ class ImageViewCell: BaseCell {
         breedImageView.contentMode = .scaleAspectFill
         breedImageView.clipsToBounds = true
         
+    }*/
+}
+
+extension ImageViewCell: ImageViewCellProtocol {
+    func configureCell(imageURL: String?, isFavourite: Bool) {
+        activityIndicator.startAnimating()
+        breedImageView.image = nil
+        DispatchQueue.global(qos: .userInteractive).async {
+            guard let url = URL(string: imageURL!) else { return }
+            do {
+                let image = UIImage(data: try Data(contentsOf: url))
+                DispatchQueue.main.async {
+                    if isFavourite {
+                        self.likeButton.tintColor = #colorLiteral(red: 1, green: 0, blue: 0.1329793036, alpha: 1)
+                        print("---\(isFavourite)")
+                        self.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                    } else {
+                        self.likeButton.tintColor = UIColor.black
+                        self.likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+                        print("---\(isFavourite)")
+                    }
+                    //self.breedImageView.kf.setImage(with: URL(string: image), placeholder: UIImage(named: ""))
+                    self.breedImageView.image = image
+                    self.activityIndicator.stopAnimating()
+                }
+            } catch { }
+        }
     }
+
 }
 

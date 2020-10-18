@@ -33,8 +33,13 @@
                             <imageReference key="image" image="heart" catalog="system" symbolScale="large"/>
                         </state>
                     </button>
+                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="e1Q-4z-ER4">
+                        <rect key="frame" x="165" y="165" width="20" height="20"/>
+                    </activityIndicatorView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="e1Q-4z-ER4" firstAttribute="centerX" secondItem="gfg-3d-fHF" secondAttribute="centerX" id="4ZO-48-2os"/>
+                    <constraint firstItem="e1Q-4z-ER4" firstAttribute="centerY" secondItem="gfg-3d-fHF" secondAttribute="centerY" id="7BH-DV-U3y"/>
                     <constraint firstAttribute="bottom" secondItem="50B-3q-krF" secondAttribute="bottom" constant="12" id="7SS-1c-Xjw"/>
                     <constraint firstItem="50B-3q-krF" firstAttribute="leading" secondItem="gfg-3d-fHF" secondAttribute="leading" constant="12" id="ACd-VG-GLf"/>
                     <constraint firstAttribute="trailing" secondItem="Rya-Mb-cPz" secondAttribute="trailing" constant="22" id="Ehn-7i-vni"/>
@@ -45,6 +50,7 @@
             </collectionViewCellContentView>
             <size key="customSize" width="528" height="280"/>
             <connections>
+                <outlet property="activityIndicator" destination="e1Q-4z-ER4" id="xHu-0g-5eM"/>
                 <outlet property="breedImageView" destination="50B-3q-krF" id="74t-AV-Z2M"/>
                 <outlet property="likeButton" destination="Rya-Mb-cPz" id="Vpy-bl-Ifb"/>
             </connections>

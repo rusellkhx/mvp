@@ -28,8 +28,7 @@ class ImageViewController: UIViewController {
     let serviceStorage = StorageService()
     var presenter: ImagePresenterProtocol!
     var page = 0
-    let realm = try! Realm()
-    var dogs = Dog()
+    var str = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,34 +79,33 @@ extension ImageViewController: UICollectionViewDataSource, UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collecView.create(ImageViewCell.self, indexPath)
-        
         page = indexPath.row
-        print("------")
+        str = presenter.subBreedResults[indexPath.row]
         print(page)
-        print("------")
-        print(page - 1)
-        let image: String = presenter.subBreedResults[indexPath.row] 
+        print("---")
+
+        presenter.configurateCell(cell, item: indexPath.row)
         
-        cell.breedImageView.kf.setImage(with: URL(string: image), placeholder: UIImage(named: ""))
+        //cell.breedImageView.kf.setImage(with: URL(string: image), placeholder: UIImage(named: ""))
         cell.likeButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
 
         return cell
     }
     
-    @objc func buttonPressed()
+    @objc func buttonPressed(_ sender: UIButton)
     {
-        /*let dog = Dog()
-        dog.breed = presenter.breedName()
-        dog.image = presenter.subBreedResults[page]
-        dog.hasFavourited = true
-        
-        try! self.realm.write {
-            self.realm.add(dog)
-        }*/
-        
-        serviceStorage.changePhotoStatus(presenter.breedName(), presenter.subBreedResults[page])
-        //print("Save Dog name:\(String(describing: dog.breed)), image: \(String(describing: dog.image)), hasFavourited:\(dog.hasFavourited)")
+        if sender.tintColor == UIColor.black {
+            MVP_EXAMPLE.StorageServiceSecond.shared.saveDogBreed(presenter.breedName(), str)
+            sender.tintColor = #colorLiteral(red: 1, green: 0, blue: 0.1329793036, alpha: 1)
+            sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        } else {
+            MVP_EXAMPLE.StorageServiceSecond.shared.deleteModel(imageURL: str)
+            sender.tintColor = UIColor.black
+            sender.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
     }
+        //StorageServiceSecond.shared.saveDogBreed(presenter.breedName(), presenter.subBreedResults[page])
+        //serviceStorage.changePhotoStatus(presenter.breedName(), presenter.subBreedResults[page])
 
 }
 
@@ -136,7 +134,6 @@ extension ImageViewController {
     @objc func openAlert() {
         
         let optionMenu = UIAlertController(title: nil, message: "Share photo", preferredStyle: .actionSheet)
-        
         let shareAction = UIAlertAction(title: "Share", style: .default, handler:
         {
             (alert: UIAlertAction!) -> Void in
@@ -153,7 +150,7 @@ extension ImageViewController {
     }
     
     func sharePhoto() {
-        if let photoURL = [presenter.subBreedResults[page - 1]] as? [Any] {
+        if let photoURL = [str] as? [Any] {
             let activityVC = UIActivityViewController(activityItems: photoURL, applicationActivities: nil)
             
             activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.message]
@@ -162,4 +159,5 @@ extension ImageViewController {
             self.present(activityVC, animated: true, completion: nil)
         }
     }
+    
 }

@@ -15,6 +15,7 @@ protocol ImagePresenterProtocol: class {
     func getCountItem() -> Int
     func breedName() -> String
     var subBreedResults: [String] { get }
+    func configurateCell(_ cell: ImageViewCellProtocol, item: Int)
 }
 
 class ImagePresenter: ImagePresenterProtocol {
@@ -62,6 +63,27 @@ class ImagePresenter: ImagePresenterProtocol {
     
     func breedName() -> String {
         return breedNameForImages.capitalized
+    }
+    
+    func configurateCell(_ cell: ImageViewCellProtocol, item: Int) {
+        var isFavourite = false
+        
+        DispatchQueue.global(qos: .userInteractive).async {
+            let url = self.subBreedResults[item]
+            //do {
+                DispatchQueue.main.async {
+                    if StorageServiceSecond.shared.readImage(imageURL: url) {
+                        print(StorageServiceSecond.shared.readImage(imageURL: url))
+                        isFavourite = true
+                    } else {
+                        isFavourite = false
+                    }
+                    cell.configureCell(imageURL: self.subBreedResults[item], isFavourite: isFavourite)
+                }
+            //} catch { }
+        }
+        
+        
     }
     
 }

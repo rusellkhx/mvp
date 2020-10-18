@@ -32,11 +32,6 @@ class BreedViewController: UIViewController {
         setupViews()
     }
     
-   /* override func viewWillAppear(_ animated: Bool) {
-        presenter = BreedPresenter(view: self)
-        setupViews()
-    }*/
-    
     private func setupViews() {
         setupNavBar()
         setupTableView()
