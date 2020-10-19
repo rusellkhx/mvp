@@ -48,13 +48,14 @@ class BreedPresenter: BreedPresenterProtocol {
                 var result: [DogModel] = []
                 
                 self.finalResult = self.dogBreed![0].message
-                let breedArray = self.dogBreed![0].message.keys
+                let breedArray = self.dogBreed![0].message.keys.sorted()
+                
                 for (key, value) in self.finalResult {
                     let model = DogModel(breed: key, subbreed: value)
-                    print(key, value)
                     result.append(model)
                 }
-                self.result = result
+                self.result = result.sorted(by: { $0.breed < $1.breed })
+
                 
                 for type in breedArray {
                     self.breedResults.append(type)
