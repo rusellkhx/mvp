@@ -30,8 +30,15 @@ class ImageViewController: UIViewController {
     var page = 0
     var str = ""
     
+    var screenSize: CGRect!
+    var screenWidth: CGFloat!
+    var screenHeight: CGFloat!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        screenSize = UIScreen.main.bounds
+        screenWidth = screenSize.width
+        screenHeight = screenSize.height
         setupViews()
         presenter.getSubBreedImages()
     }
@@ -42,16 +49,21 @@ class ImageViewController: UIViewController {
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 0.0
         layout.minimumInteritemSpacing = 0.0
-        layout.itemSize = UIScreen.main.bounds.size
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
+        layout.itemSize = CGSize(width: screenWidth / 1, height: screenWidth / 1)
+        //layout.itemSize = UIScreen.main.bounds.size
         
         collecView.register(ImageViewCell.self)
         collecView.dataSource = self
         collecView.delegate = self
+        //collecView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         collecView.collectionViewLayout = layout
         collecView.backgroundColor = .systemBackground
-        collecView.showsVerticalScrollIndicator = false
-        collecView.showsHorizontalScrollIndicator = false
         collecView.isPagingEnabled = true
+        
+                
+                
+        
     }
     
     private func setupViews() {
@@ -79,17 +91,27 @@ extension ImageViewController: UICollectionViewDataSource, UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collecView.create(ImageViewCell.self, indexPath)
+
+        presenter.configurateCell(cell, item: indexPath.item)
+        
+        cell.likeButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         page = indexPath.row
         str = presenter.subBreedResults[indexPath.row]
-        print(page)
+        print("\(page) - \(str)")
         print("---")
-
-        presenter.configurateCell(cell, item: indexPath.row)
-        
-        //cell.breedImageView.kf.setImage(with: URL(string: image), placeholder: UIImage(named: ""))
-        cell.likeButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
-
+    
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        var cellSize: CGSize = collectionView.bounds.size
+        
+        cellSize.width -= collecView.contentInset.left
+        cellSize.width -= collecView.contentInset.right
+        cellSize.height = cellSize.width
+        
+        return cellSize
     }
     
     @objc func buttonPressed(_ sender: UIButton)
@@ -104,9 +126,6 @@ extension ImageViewController: UICollectionViewDataSource, UICollectionViewDeleg
             sender.setImage(UIImage(systemName: "heart"), for: .normal)
         }
     }
-        //StorageServiceSecond.shared.saveDogBreed(presenter.breedName(), presenter.subBreedResults[page])
-        //serviceStorage.changePhotoStatus(presenter.breedName(), presenter.subBreedResults[page])
-
 }
 
 extension ImageViewController: ImageViewControllerProtocol {

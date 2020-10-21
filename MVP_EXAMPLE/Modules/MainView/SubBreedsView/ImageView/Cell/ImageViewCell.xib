@@ -19,33 +19,32 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="50B-3q-krF" userLabel="image">
-                        <rect key="frame" x="12" y="12" width="326" height="326"/>
+                        <rect key="frame" x="12" y="12" width="326" height="263"/>
                     </imageView>
+                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="e1Q-4z-ER4">
+                        <rect key="frame" x="165" y="165" width="20" height="20"/>
+                    </activityIndicatorView>
                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rya-Mb-cPz">
-                        <rect key="frame" x="280" y="151" width="48" height="48"/>
+                        <rect key="frame" x="151" y="277" width="48" height="48"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="Rya-Mb-cPz" secondAttribute="height" multiplier="1:1" id="0GK-XP-JU1"/>
-                            <constraint firstAttribute="height" constant="48" id="KMV-D3-hl7"/>
-                            <constraint firstAttribute="width" constant="48" id="iaB-Bs-k8t"/>
+                            <constraint firstAttribute="width" constant="48" id="i16-Kh-cKg"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                         <state key="normal" title="">
                             <imageReference key="image" image="heart" catalog="system" symbolScale="large"/>
                         </state>
                     </button>
-                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="e1Q-4z-ER4">
-                        <rect key="frame" x="165" y="165" width="20" height="20"/>
-                    </activityIndicatorView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="e1Q-4z-ER4" firstAttribute="centerX" secondItem="gfg-3d-fHF" secondAttribute="centerX" id="4ZO-48-2os"/>
-                    <constraint firstItem="e1Q-4z-ER4" firstAttribute="centerY" secondItem="gfg-3d-fHF" secondAttribute="centerY" id="7BH-DV-U3y"/>
-                    <constraint firstAttribute="bottom" secondItem="50B-3q-krF" secondAttribute="bottom" constant="12" id="7SS-1c-Xjw"/>
-                    <constraint firstItem="50B-3q-krF" firstAttribute="leading" secondItem="gfg-3d-fHF" secondAttribute="leading" constant="12" id="ACd-VG-GLf"/>
-                    <constraint firstAttribute="trailing" secondItem="Rya-Mb-cPz" secondAttribute="trailing" constant="22" id="Ehn-7i-vni"/>
-                    <constraint firstAttribute="bottom" secondItem="Rya-Mb-cPz" secondAttribute="bottom" constant="151" id="GV9-si-vrx"/>
-                    <constraint firstItem="50B-3q-krF" firstAttribute="top" secondItem="gfg-3d-fHF" secondAttribute="top" constant="12" id="sDk-8H-Sfq"/>
-                    <constraint firstAttribute="trailing" secondItem="50B-3q-krF" secondAttribute="trailing" constant="12" id="xxX-TU-7tG"/>
+                    <constraint firstItem="50B-3q-krF" firstAttribute="centerX" secondItem="gfg-3d-fHF" secondAttribute="centerX" id="15f-nc-hYI"/>
+                    <constraint firstItem="50B-3q-krF" firstAttribute="centerX" secondItem="e1Q-4z-ER4" secondAttribute="centerX" id="Amj-8D-zQS"/>
+                    <constraint firstItem="Rya-Mb-cPz" firstAttribute="top" secondItem="50B-3q-krF" secondAttribute="bottom" constant="2" id="FaC-mk-3Nr"/>
+                    <constraint firstAttribute="bottom" secondItem="Rya-Mb-cPz" secondAttribute="bottom" constant="25" id="NAy-dn-xU6"/>
+                    <constraint firstItem="e1Q-4z-ER4" firstAttribute="centerX" secondItem="Rya-Mb-cPz" secondAttribute="centerX" id="fSv-R6-Fsv"/>
+                    <constraint firstItem="50B-3q-krF" firstAttribute="leading" secondItem="gfg-3d-fHF" secondAttribute="leading" constant="12" id="fxx-ah-j8c"/>
+                    <constraint firstItem="e1Q-4z-ER4" firstAttribute="centerY" secondItem="gfg-3d-fHF" secondAttribute="centerY" id="my2-DY-mOs"/>
+                    <constraint firstItem="50B-3q-krF" firstAttribute="top" secondItem="gfg-3d-fHF" secondAttribute="top" constant="12" id="oMV-uG-NqB"/>
+                    <constraint firstItem="Rya-Mb-cPz" firstAttribute="top" secondItem="e1Q-4z-ER4" secondAttribute="bottom" constant="92" id="wok-mV-2ZE"/>
                 </constraints>
             </collectionViewCellContentView>
             <size key="customSize" width="528" height="280"/>

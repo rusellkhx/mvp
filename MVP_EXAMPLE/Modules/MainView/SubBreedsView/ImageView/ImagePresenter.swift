@@ -11,7 +11,6 @@ import Foundation
 protocol ImagePresenterProtocol: class {
     init(view: ImageViewControllerProtocol, breedNameForImages: String)
     func getSubBreedImages()
-    //func saveImage()
     func getCountItem() -> Int
     func breedName() -> String
     var subBreedResults: [String] { get }
@@ -19,9 +18,8 @@ protocol ImagePresenterProtocol: class {
 }
 
 class ImagePresenter: ImagePresenterProtocol {
-
+    
     let breedApi = BreedRequests()
-    //let serviceStorage = StorageService()
     
     var breedNameForImages: String
     var imageBreed: [ImageBreed]!
@@ -33,7 +31,7 @@ class ImagePresenter: ImagePresenterProtocol {
         self.view = view
         self.breedNameForImages = breedNameForImages
     }
-
+    
     func getSubBreedImages() {
         self.view.startActivityIdicator()
         breedApi.getSubBreedImages(breed: breedNameForImages){ [weak self] (data, error) in
@@ -70,21 +68,15 @@ class ImagePresenter: ImagePresenterProtocol {
         
         DispatchQueue.global(qos: .userInteractive).async {
             let url = self.subBreedResults[item]
-            //do {
-                DispatchQueue.main.async {
-                    if StorageServiceSecond.shared.readImage(imageURL: url) {
-                        print(StorageServiceSecond.shared.readImage(imageURL: url))
-                        isFavourite = true
-                    } else {
-                        isFavourite = false
-                    }
-                    cell.configureCell(imageURL: self.subBreedResults[item], isFavourite: isFavourite)
+            DispatchQueue.main.async {
+                if StorageServiceSecond.shared.readImage(imageURL: url) {
+                    isFavourite = true
+                } else {
+                    isFavourite = false
                 }
-            //} catch { }
+                cell.configureCell(imageURL: self.subBreedResults[item], isFavourite: isFavourite)
+            }
         }
-        
-        
     }
-    
 }
 

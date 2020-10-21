@@ -15,11 +15,11 @@ protocol ImageViewCellProtocol {
 
 
 class BaseCell: UICollectionViewCell {
-
+    
     required init?(coder aDecoder: NSCoder) {
-       super.init(coder: aDecoder)
+        super.init(coder: aDecoder)
     }
-
+    
     func setupViews() {
     }
 }
@@ -30,15 +30,14 @@ class ImageViewCell: BaseCell {
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    /*override func setupViews() {
+    override func setupViews() {
         
         addSubview(breedImageView)
         addSubview(likeButton)
         breedImageView.contentMode = .center
-        breedImageView.contentMode = .scaleAspectFill
+        breedImageView.contentMode = .scaleAspectFit
         breedImageView.clipsToBounds = true
-        
-    }*/
+    }
 }
 
 extension ImageViewCell: ImageViewCellProtocol {
@@ -46,26 +45,22 @@ extension ImageViewCell: ImageViewCellProtocol {
         activityIndicator.startAnimating()
         breedImageView.image = nil
         DispatchQueue.global(qos: .userInteractive).async {
-            guard let url = URL(string: imageURL!) else { return }
-            do {
-                let image = UIImage(data: try Data(contentsOf: url))
-                DispatchQueue.main.async {
-                    if isFavourite {
-                        self.likeButton.tintColor = #colorLiteral(red: 1, green: 0, blue: 0.1329793036, alpha: 1)
-                        print("---\(isFavourite)")
-                        self.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-                    } else {
-                        self.likeButton.tintColor = UIColor.black
-                        self.likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
-                        print("---\(isFavourite)")
-                    }
-                    //self.breedImageView.kf.setImage(with: URL(string: image), placeholder: UIImage(named: ""))
-                    self.breedImageView.image = image
-                    self.activityIndicator.stopAnimating()
+            guard let url = imageURL else { return }
+            DispatchQueue.main.async {
+                if isFavourite {
+                    self.likeButton.tintColor = .red
+                    self.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .highlighted)
+                } else {
+                    self.likeButton.tintColor = .black
+                    self.likeButton.setImage(UIImage(systemName: "heart"), for: .highlighted)
+                    
                 }
-            } catch { }
+                self.breedImageView.kf.setImage(with: URL(string: url), placeholder: UIImage(named: ""))
+                
+                self.activityIndicator.stopAnimating()
+            }
         }
     }
-
+    
 }
 
