@@ -17,7 +17,6 @@ protocol ImageViewControllerProtocol: class {
     func showMessageAlert(_ message: String)
     func showErrorAlert(message: String)
     func showChoiceAlert(title: String? , message: String?, customActions: [UIAlertAction])
-    
 }
 
 class ImageViewController: UIViewController {
@@ -25,7 +24,7 @@ class ImageViewController: UIViewController {
     @IBOutlet weak var collecView: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    let serviceStorage = StorageService()
+    let serviceStorage = StorageServiceDB()
     var presenter: ImagePresenterProtocol!
     var page = 0
     var str = ""
@@ -33,6 +32,9 @@ class ImageViewController: UIViewController {
     var screenSize: CGRect!
     var screenWidth: CGFloat!
     var screenHeight: CGFloat!
+    
+    var visibleCurrentCellIndexPath: IndexPath?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,10 +62,7 @@ class ImageViewController: UIViewController {
         collecView.collectionViewLayout = layout
         collecView.backgroundColor = .systemBackground
         collecView.isPagingEnabled = true
-        
-                
-                
-        
+
     }
     
     private func setupViews() {
@@ -91,38 +90,25 @@ extension ImageViewController: UICollectionViewDataSource, UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collecView.create(ImageViewCell.self, indexPath)
-
-        presenter.configurateCell(cell, item: indexPath.item)
-        
-        cell.likeButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        presenter.configurateCell(cell, item: indexPath.row)
         page = indexPath.row
         str = presenter.subBreedResults[indexPath.row]
         print("\(page) - \(str)")
         print("---")
-    
+        let indexPath = presenter.subBreedResults[indexPath.row]
+        print(indexPath)
+        cell.likeButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        var cellSize: CGSize = collectionView.bounds.size
-        
-        cellSize.width -= collecView.contentInset.left
-        cellSize.width -= collecView.contentInset.right
-        cellSize.height = cellSize.width
-        
-        return cellSize
     }
     
     @objc func buttonPressed(_ sender: UIButton)
     {
         if sender.tintColor == UIColor.black {
-            MVP_EXAMPLE.StorageServiceSecond.shared.saveDogBreed(presenter.breedName(), str)
-            sender.tintColor = #colorLiteral(red: 1, green: 0, blue: 0.1329793036, alpha: 1)
+            presenter.setSaveDog(presenter.breedName(), str)
             sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         } else {
-            MVP_EXAMPLE.StorageServiceSecond.shared.deleteModel(imageURL: str)
-            sender.tintColor = UIColor.black
+            presenter.deleteDog(imageURL: str)
+            //sender.tintColor = UIColor.black
             sender.setImage(UIImage(systemName: "heart"), for: .normal)
         }
     }

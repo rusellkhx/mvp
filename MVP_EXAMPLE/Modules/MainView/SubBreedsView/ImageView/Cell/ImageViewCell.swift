@@ -15,11 +15,11 @@ protocol ImageViewCellProtocol {
 
 
 class BaseCell: UICollectionViewCell {
-    
+
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+       super.init(coder: aDecoder)
     }
-    
+
     func setupViews() {
     }
 }
@@ -46,21 +46,25 @@ extension ImageViewCell: ImageViewCellProtocol {
         breedImageView.image = nil
         DispatchQueue.global(qos: .userInteractive).async {
             guard let url = imageURL else { return }
-            DispatchQueue.main.async {
-                if isFavourite {
-                    self.likeButton.tintColor = .red
-                    self.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .highlighted)
-                } else {
-                    self.likeButton.tintColor = .black
-                    self.likeButton.setImage(UIImage(systemName: "heart"), for: .highlighted)
-                    
+            do {
+                //let image = UIImage(data: try Data(contentsOf: url))
+                DispatchQueue.main.async {
+                    if isFavourite {
+                        self.likeButton.tintColor = .red
+                        print("---\(isFavourite)")
+                        self.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                    } else {
+                        self.likeButton.tintColor = .black
+                        self.likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+                        //print("---\(isFavourite)")
+                    }
+                    self.breedImageView.kf.setImage(with: URL(string: url), placeholder: UIImage(named: ""))
+                    //self.breedImageView.image = image
+                    self.activityIndicator.stopAnimating()
                 }
-                self.breedImageView.kf.setImage(with: URL(string: url), placeholder: UIImage(named: ""))
-                
-                self.activityIndicator.stopAnimating()
-            }
+            } catch { }
         }
     }
-    
+
 }
 

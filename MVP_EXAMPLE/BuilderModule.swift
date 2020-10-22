@@ -40,6 +40,8 @@ class ModuleBuilder: Builder {
     
     static func createFavouritesModule() -> UIViewController {
         let view = FavouritesViewController()
+        let presenter = FavouritesPresenter(view: view)
+        view.presenter = presenter
         return view
     }
 }

@@ -15,11 +15,14 @@ protocol ImagePresenterProtocol: class {
     func breedName() -> String
     var subBreedResults: [String] { get }
     func configurateCell(_ cell: ImageViewCellProtocol, item: Int)
+    func setSaveDog(_ name: String, _ photoURL: String)
+    func deleteDog(imageURL: String) 
 }
 
 class ImagePresenter: ImagePresenterProtocol {
-    
+
     let breedApi = BreedRequests()
+    let storageService = StorageService()
     
     var breedNameForImages: String
     var imageBreed: [ImageBreed]!
@@ -69,7 +72,7 @@ class ImagePresenter: ImagePresenterProtocol {
         DispatchQueue.global(qos: .userInteractive).async {
             let url = self.subBreedResults[item]
             DispatchQueue.main.async {
-                if StorageServiceSecond.shared.readImage(imageURL: url) {
+                if self.storageService.readImage(imageURL: url) {
                     isFavourite = true
                 } else {
                     isFavourite = false
@@ -77,6 +80,16 @@ class ImagePresenter: ImagePresenterProtocol {
                 cell.configureCell(imageURL: self.subBreedResults[item], isFavourite: isFavourite)
             }
         }
+    }
+    
+    func setSaveDog(_ name: String, _ photoURL: String) {
+        self.storageService.saveModel(name, photoURL)
+        self.view.reloadCollection()
+    }
+    
+    func deleteDog(imageURL: String) {
+        self.storageService.deleteModel(imageURL: imageURL)
+        self.view.reloadCollection()
     }
 }
 
