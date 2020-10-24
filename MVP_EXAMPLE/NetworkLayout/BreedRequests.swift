@@ -20,19 +20,22 @@ class BreedRequests: RestClient {
     
     func getSubBreeds(breed: String, resp: @escaping IdResponseBlock) {
         let url = baseUrl + "breed/" + breed + "/list"
-        print(url)
         http.queryByApiKey(url, queue: .defaultQos) { (data, error) in
             self.response(data, error, modelCls: SubBreeeds.self, resp: resp)
         }
     }
     
-    func getSubBreedImages(breed: String, resp: @escaping IdResponseBlock) {
+    func getImages(breed: String, resp: @escaping IdResponseBlock) {
         let url = baseUrl + "breed/" + breed + "/images"
-        print(url)
         http.queryByApiKey(url, queue: .defaultQos) { (data, error) in
             self.response(data, error, modelCls: ImageBreed.self, resp: resp)
         }
     }
     
+    func getStorageImages(breed: String, resp: @escaping IdResponseBlock) {
+        http.queryByApiKey(breed, queue: .defaultQos) { (data, error) in
+            self.response(data, error, modelCls: ImageBreed.self, resp: resp)
+        }
+    }
 }
 

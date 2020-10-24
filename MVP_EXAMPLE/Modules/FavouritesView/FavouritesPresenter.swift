@@ -11,7 +11,7 @@ import Foundation
 protocol FavouritesPresenterProtocol: class {
     init(view: FavouritesViewControllerProtocol)
     func configurateCell(_ cell: BreedTableViewCellProtocol, item: Int)
-    //func pressCell(_ item: Int)
+    func pressCell(_ item: Int)
     func getCountItem() -> Int
     var dogBreed: [Breed]? { get }
     func getBreed()
@@ -32,22 +32,24 @@ class FavouritesPresenter: FavouritesPresenterProtocol {
     }
     
     func getBreed() {
-        //self.view.startActivityIdicator()
         guard let dogRestore2 = self.storageService.readModel() else { return }
         dogRestore = dogRestore2
-        //self.view.stopActivityIdicator()
         self.view.reloadTable()
-        print(dogRestore)
     }
     
     func configurateCell(_ cell: BreedTableViewCellProtocol, item: Int) {
-        cell.display(title: "\(dogRestore[item].breed) (\(dogRestore[item].image.count ?? 0) photos)")
+        cell.display(title: "\(dogRestore[item].breed) (\(dogRestore[item].image.count ) photos)")
     }
     
     func getCountItem() -> Int {
         dogRestore.count
     }
     
-    
-    
+    func pressCell(_ item: Int) {
+        let images = dogRestore[item].image
+        let breed = dogRestore[item].breed
+
+        let imageBreedViewController = ModuleBuilder.createImageBreedModule(breedNameForImages: "\(images[item].imageURL)",                                                                      breedName: "\(breed)")
+        self.view.pushToVC(imageBreedViewController)
+    }
 }

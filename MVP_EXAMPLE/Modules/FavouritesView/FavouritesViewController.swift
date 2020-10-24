@@ -25,8 +25,8 @@ class FavouritesViewController: UIViewController {
     
     var presenter: FavouritesPresenterProtocol!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         presenter.getBreed()
         setupViews()
     }
@@ -62,11 +62,11 @@ extension FavouritesViewController: UITableViewDataSource {
     }
 }
 
-/*extension FavouritesViewController: UITableViewDelegate {
+extension FavouritesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter.pressCell(indexPath.row)
     }
-}*/
+}
 
 extension FavouritesViewController: FavouritesViewControllerProtocol {
     

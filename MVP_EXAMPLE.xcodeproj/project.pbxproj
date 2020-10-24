@@ -171,6 +171,7 @@
 		4231C5B4251900D700E90C4E /* ModulesBuilder */ = {
 			isa = PBXGroup;
 			children = (
+				422EF93325079F4B00C3174B /* BuilderModule.swift */,
 			);
 			name = ModulesBuilder;
 			sourceTree = "<group>";
@@ -225,7 +226,6 @@
 		4251C8C124FF7D8C00D3EF94 /* MVP_EXAMPLE */ = {
 			isa = PBXGroup;
 			children = (
-				422EF93325079F4B00C3174B /* BuilderModule.swift */,
 				4231C5B4251900D700E90C4E /* ModulesBuilder */,
 				42183CF325060DFF00087236 /* Extensions */,
 				4250F1612505308900E57761 /* Modules */,

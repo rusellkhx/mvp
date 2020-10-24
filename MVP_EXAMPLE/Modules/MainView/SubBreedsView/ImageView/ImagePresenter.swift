@@ -9,14 +9,16 @@
 import Foundation
 
 protocol ImagePresenterProtocol: class {
-    init(view: ImageViewControllerProtocol, breedNameForImages: String)
-    func getSubBreedImages()
+    init(view: ImageViewControllerProtocol,
+         breedNameForImages: String,
+         breedName: String)
+    func getImages()
     func getCountItem() -> Int
-    func breedName() -> String
+    func getBreedName() -> String
     var subBreedResults: [String] { get }
     func configurateCell(_ cell: ImageViewCellProtocol, item: Int)
     func setSaveDog(_ name: String, _ photoURL: String)
-    func deleteDog(imageURL: String) 
+    func deleteDog(_ imageURL: String) 
 }
 
 class ImagePresenter: ImagePresenterProtocol {
@@ -25,21 +27,25 @@ class ImagePresenter: ImagePresenterProtocol {
     let storageService = StorageService()
     
     var breedNameForImages: String
+    var breedName: String
     var imageBreed: [ImageBreed]!
     var subBreedResults = [String] ()
+    var breedImages: [BreedRealm]!
     
     private unowned let view: ImageViewControllerProtocol
     
-    required init(view: ImageViewControllerProtocol, breedNameForImages: String) {
+    required init(view: ImageViewControllerProtocol,
+                  breedNameForImages: String,
+                  breedName: String) {
         self.view = view
         self.breedNameForImages = breedNameForImages
+        self.breedName = breedName
     }
     
-    func getSubBreedImages() {
+    func getImages() {
         self.view.startActivityIdicator()
-        breedApi.getSubBreedImages(breed: breedNameForImages){ [weak self] (data, error) in
+        breedApi.getImages(breed: breedNameForImages) { [weak self] (data, error) in
             guard let self = self else { return }
-            
             self.view.stopActivityIdicator()
             if let error = error as? CustomError {
                 self.view.showErrorAlert(message: error.localizedDescription)
@@ -56,14 +62,15 @@ class ImagePresenter: ImagePresenterProtocol {
                 self.view.reloadCollection()
             }
         }
+        
     }
     
     func getCountItem() -> Int {
         return subBreedResults.count
     }
     
-    func breedName() -> String {
-        return breedNameForImages.capitalized
+    func getBreedName() -> String {
+        return breedName.capitalized
     }
     
     func configurateCell(_ cell: ImageViewCellProtocol, item: Int) {
@@ -87,7 +94,7 @@ class ImagePresenter: ImagePresenterProtocol {
         self.view.reloadCollection()
     }
     
-    func deleteDog(imageURL: String) {
+    func deleteDog(_ imageURL: String) {
         self.storageService.deleteModel(imageURL: imageURL)
         self.view.reloadCollection()
     }

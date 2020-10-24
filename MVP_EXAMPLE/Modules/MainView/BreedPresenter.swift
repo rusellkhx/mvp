@@ -86,7 +86,7 @@ class BreedPresenter: BreedPresenterProtocol {
         let countSubBreed = result[item].subbreed.count == 0
         
         if countSubBreed {
-            let imageBreedViewController = ModuleBuilder.createImageBreedModule(breedNameForImages: breed)
+            let imageBreedViewController = ModuleBuilder.createImageBreedModule(breedNameForImages: breed, breedName: breed)
             self.view.pushToVC(imageBreedViewController)
         } else {
             let subBreedsViewController = ModuleBuilder.createSubBreedModule(breed: breed)

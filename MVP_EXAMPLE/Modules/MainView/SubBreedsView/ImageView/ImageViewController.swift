@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Kingfisher
-import RealmSwift
 
 protocol ImageViewControllerProtocol: class {
     func startActivityIdicator()
@@ -16,7 +14,7 @@ protocol ImageViewControllerProtocol: class {
     func reloadCollection()
     func showMessageAlert(_ message: String)
     func showErrorAlert(message: String)
-    func showChoiceAlert(title: String? , message: String?, customActions: [UIAlertAction])
+    func showChoiceAlert(title: String?, message: String?, customActions: [UIAlertAction])
 }
 
 class ImageViewController: UIViewController {
@@ -42,31 +40,27 @@ class ImageViewController: UIViewController {
         screenWidth = screenSize.width
         screenHeight = screenSize.height
         setupViews()
-        presenter.getSubBreedImages()
+        presenter.getImages()
     }
     
     private func setupCollectionView() {
-
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 0.0
         layout.minimumInteritemSpacing = 0.0
         layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
         layout.itemSize = CGSize(width: screenWidth / 1, height: screenWidth / 1)
-        //layout.itemSize = UIScreen.main.bounds.size
         
         collecView.register(ImageViewCell.self)
         collecView.dataSource = self
         collecView.delegate = self
-        //collecView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         collecView.collectionViewLayout = layout
         collecView.backgroundColor = .systemBackground
         collecView.isPagingEnabled = true
-
     }
     
     private func setupViews() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: HelperDescriptionImages.Navigation.sharePhoto),
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName:                    HelperDescriptionImages.Navigation.sharePhoto),
                                                             style: .plain,
                                                             target: self,
                                                             action: #selector(openAlert))
@@ -78,7 +72,7 @@ class ImageViewController: UIViewController {
     }
     
     private func setupNavBar() {
-        title = presenter.breedName()
+        title = presenter.getBreedName()
     }
 }
 
@@ -93,10 +87,7 @@ extension ImageViewController: UICollectionViewDataSource, UICollectionViewDeleg
         presenter.configurateCell(cell, item: indexPath.row)
         page = indexPath.row
         str = presenter.subBreedResults[indexPath.row]
-        print("\(page) - \(str)")
-        print("---")
-        let indexPath = presenter.subBreedResults[indexPath.row]
-        print(indexPath)
+        //let indexPath = presenter.subBreedResults[indexPath.row]
         cell.likeButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         return cell
     }
@@ -104,10 +95,10 @@ extension ImageViewController: UICollectionViewDataSource, UICollectionViewDeleg
     @objc func buttonPressed(_ sender: UIButton)
     {
         if sender.tintColor == UIColor.black {
-            presenter.setSaveDog(presenter.breedName(), str)
+            presenter.setSaveDog(presenter.getBreedName(), str)
             sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         } else {
-            presenter.deleteDog(imageURL: str)
+            presenter.deleteDog(str)
             //sender.tintColor = UIColor.black
             sender.setImage(UIImage(systemName: "heart"), for: .normal)
         }

@@ -46,23 +46,17 @@ extension ImageViewCell: ImageViewCellProtocol {
         breedImageView.image = nil
         DispatchQueue.global(qos: .userInteractive).async {
             guard let url = imageURL else { return }
-            do {
-                //let image = UIImage(data: try Data(contentsOf: url))
                 DispatchQueue.main.async {
                     if isFavourite {
                         self.likeButton.tintColor = .red
-                        print("---\(isFavourite)")
                         self.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                     } else {
                         self.likeButton.tintColor = .black
                         self.likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
-                        //print("---\(isFavourite)")
                     }
                     self.breedImageView.kf.setImage(with: URL(string: url), placeholder: UIImage(named: ""))
-                    //self.breedImageView.image = image
                     self.activityIndicator.stopAnimating()
                 }
-            } catch { }
         }
     }
 

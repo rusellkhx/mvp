@@ -35,7 +35,6 @@ protocol StorageServiceProtocol {
 
 class StorageService: StorageServiceProtocol {
     
-    //static var shared = StorageService()
     private var realm: Realm
     
     init() {

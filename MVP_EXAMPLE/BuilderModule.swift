@@ -11,13 +11,12 @@ import UIKit
 protocol Builder {
     static func createMainModule() -> UIViewController
     static func createSubBreedModule(breed: String) -> UIViewController
-    static func createImageBreedModule(breedNameForImages: String) -> UIViewController
+    static func createImageBreedModule(breedNameForImages: String, breedName: String) -> UIViewController
     static func createFavouritesModule() -> UIViewController
 }
 
 class ModuleBuilder: Builder {
-    
-        static func createMainModule() -> UIViewController {
+    static func createMainModule() -> UIViewController {
         let view = BreedViewController()
         let presenter = BreedPresenter(view: view)
         view.presenter = presenter
@@ -31,9 +30,9 @@ class ModuleBuilder: Builder {
         return view
     }
     
-    static func createImageBreedModule(breedNameForImages breed: String) -> UIViewController {
+    static func createImageBreedModule(breedNameForImages breed: String, breedName: String) -> UIViewController {
         let view = ImageViewController()
-        let presenter = ImagePresenter(view: view, breedNameForImages: breed)
+        let presenter = ImagePresenter(view: view, breedNameForImages: breed, breedName: breedName)
         view.presenter = presenter
         return view
     }
