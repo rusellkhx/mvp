@@ -71,7 +71,9 @@ class SubBreedsPresenter: SubBreedsPresenterProtocol {
     
     func pressCell(_ item: Int) {
         let breed = subBreedResults[item]
-        let imageBreedViewController = ModuleBuilder.createImageBreedModule(breedNameForImages: "\(breedForApi)/\(breed)", breedName: "\(breed)")
+        let imageBreedViewController = ModuleBuilder.createImageBreedModule(breedNameForImages: "\(breedForApi)/\(breed)",
+                                                                            breedName: "\(breed)",
+                                                                            sourceImages: true)
         self.view.pushToVC(imageBreedViewController)
     }
 }

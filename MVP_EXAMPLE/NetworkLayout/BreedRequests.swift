@@ -31,11 +31,5 @@ class BreedRequests: RestClient {
             self.response(data, error, modelCls: ImageBreed.self, resp: resp)
         }
     }
-    
-    func getStorageImages(breed: String, resp: @escaping IdResponseBlock) {
-        http.queryByApiKey(breed, queue: .defaultQos) { (data, error) in
-            self.response(data, error, modelCls: ImageBreed.self, resp: resp)
-        }
-    }
 }
 

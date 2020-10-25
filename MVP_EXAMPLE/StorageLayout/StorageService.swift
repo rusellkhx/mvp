@@ -69,6 +69,21 @@ class StorageService: StorageServiceProtocol {
         return object
     }
     
+    func readBreed(breed: String) -> [String] {
+        var array = [String]()
+        var breedImagesURL = [BreedImageRealm]()
+        
+        let image = realm.objects(BreedRealm.self).filter("breed == '\(breed)'").array
+
+        for url in image {
+            breedImagesURL.append(contentsOf: url.image)
+        }
+        for url in breedImagesURL {
+            array.append(url.imageURL)
+        }
+        return array
+    }
+    
     func readImage(imageURL: String) -> Bool {
         if realm.objects(BreedImageRealm.self).filter("imageURL == '\(imageURL)'").count == 0 {
             return false

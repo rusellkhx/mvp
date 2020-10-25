@@ -20,8 +20,6 @@ protocol FavouritesPresenterProtocol: class {
 class FavouritesPresenter: FavouritesPresenterProtocol {
     
     var dogBreed: [Breed]?
-    
-    
     let storageService = StorageService()
     var dogRestore: [BreedRealm]!
     
@@ -49,7 +47,8 @@ class FavouritesPresenter: FavouritesPresenterProtocol {
         let images = dogRestore[item].image
         let breed = dogRestore[item].breed
 
-        let imageBreedViewController = ModuleBuilder.createImageBreedModule(breedNameForImages: "\(images[item].imageURL)",                                                                      breedName: "\(breed)")
+        let imageBreedViewController = ModuleBuilder.createImageBreedModule(breedNameForImages: "\(images[item].imageURL)",                                                                      breedName: "\(breed)",
+                                                                            sourceImages: false)
         self.view.pushToVC(imageBreedViewController)
     }
 }

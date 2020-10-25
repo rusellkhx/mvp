@@ -87,7 +87,6 @@ extension ImageViewController: UICollectionViewDataSource, UICollectionViewDeleg
         presenter.configurateCell(cell, item: indexPath.row)
         page = indexPath.row
         str = presenter.subBreedResults[indexPath.row]
-        //let indexPath = presenter.subBreedResults[indexPath.row]
         cell.likeButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         return cell
     }

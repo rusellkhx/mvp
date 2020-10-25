@@ -41,7 +41,7 @@ class FavouritesViewController: UIViewController {
     private func setupTableView() {
         tableView.register(BreedTableViewCell.self)
         tableView.dataSource = self
-        //tableView.delegate = self
+        tableView.delegate = self
     }
     
     private func setupNavBar() {
