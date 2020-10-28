@@ -88,16 +88,18 @@ class ImagePresenter: ImagePresenterProtocol {
         var isFavourite = false
         
         DispatchQueue.global(qos: .userInteractive).async {
-            let url = self.subBreedResults[item]
+          let url = self.subBreedResults[item]
             DispatchQueue.main.async {
                 if self.storageService.readImage(imageURL: url) {
                     isFavourite = true
+                    cell.configureCell(imageURL: self.subBreedResults[item], isFavourite: isFavourite)
                 } else {
                     isFavourite = false
+                    cell.configureCell(imageURL: self.subBreedResults[item], isFavourite: isFavourite)
                 }
-                cell.configureCell(imageURL: self.subBreedResults[item], isFavourite: isFavourite)
             }
-        }
+       }
+        self.view.reloadCollection()
     }
     
     func setSaveDog(_ name: String, _ photoURL: String) {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 protocol ImageViewControllerProtocol: class {
     func startActivityIdicator()
@@ -22,9 +23,7 @@ class ImageViewController: UIViewController {
     @IBOutlet weak var collecView: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    let serviceStorage = StorageServiceDB()
     var presenter: ImagePresenterProtocol!
-    var page = 0
     var str = ""
     
     var screenSize: CGRect!
@@ -48,7 +47,6 @@ class ImageViewController: UIViewController {
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 0.0
         layout.minimumInteritemSpacing = 0.0
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
         layout.itemSize = CGSize(width: screenWidth / 1, height: screenWidth / 1)
         
         collecView.register(ImageViewCell.self)
@@ -85,7 +83,6 @@ extension ImageViewController: UICollectionViewDataSource, UICollectionViewDeleg
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collecView.create(ImageViewCell.self, indexPath)
         presenter.configurateCell(cell, item: indexPath.row)
-        page = indexPath.row
         str = presenter.subBreedResults[indexPath.row]
         cell.likeButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         return cell

@@ -43,7 +43,6 @@ class ImageViewCell: BaseCell {
 extension ImageViewCell: ImageViewCellProtocol {
     func configureCell(imageURL: String?, isFavourite: Bool) {
         activityIndicator.startAnimating()
-        breedImageView.image = nil
         DispatchQueue.global(qos: .userInteractive).async {
             guard let url = imageURL else { return }
                 DispatchQueue.main.async {
