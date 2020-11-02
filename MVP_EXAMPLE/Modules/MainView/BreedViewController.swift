@@ -27,7 +27,6 @@ class BreedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //presenter = BreedPresenter(view: self)
         presenter.getBreed()
         setupViews()
     }
@@ -46,7 +45,7 @@ class BreedViewController: UIViewController {
     }
     
     private func setupNavBar() {
-        title = "Breeds"
+        title = HelperDescriptionImages.Navigation.titleBreeeds
     }
 }
 

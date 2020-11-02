@@ -15,10 +15,17 @@ struct HelperDescriptionImages {
         static let serverEror = "Server error!"
         static let someServerError = "Some server error!"
         static let reqestError = "Reqest error"
+        static let sharePhoto = "Share photo"
     }
     //MARK: - Navigation
     enum Navigation {
         static let titleBreeeds = "Breeds"
-        static let sharePhoto = "square.and.arrow.up"
+        static let titleSharePhoto = "square.and.arrow.up"
+        static let titleFafavourites = "Favourites"
+    }
+    
+    enum Action {
+        static let Cancel = "Cancel"
+        static let Share = "Share"
     }
 }

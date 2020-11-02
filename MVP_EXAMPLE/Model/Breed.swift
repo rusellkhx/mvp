@@ -12,11 +12,6 @@ import RealmSwift
 struct Breed: Codable {
     let message: [String: [String]]
     let status: String
-    
-    /*init?(message: [String: [String]], status: String) {
-        self.message = message
-        self.status = status
-    }*/
 }
 
 struct SubBreeeds: Codable {

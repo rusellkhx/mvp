@@ -45,7 +45,7 @@ class FavouritesViewController: UIViewController {
     }
     
     private func setupNavBar() {
-        title = "Breeds"
+        title = HelperDescriptionImages.Navigation.titleFafavourites
     }
 }
     

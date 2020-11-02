@@ -58,7 +58,7 @@ class ImageViewController: UIViewController {
     }
     
     private func setupViews() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName:                    HelperDescriptionImages.Navigation.sharePhoto),
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName:                    HelperDescriptionImages.Navigation.titleSharePhoto),
                                                             style: .plain,
                                                             target: self,
                                                             action: #selector(openAlert))
@@ -95,7 +95,6 @@ extension ImageViewController: UICollectionViewDataSource, UICollectionViewDeleg
             sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         } else {
             presenter.deleteDog(str)
-            //sender.tintColor = UIColor.black
             sender.setImage(UIImage(systemName: "heart"), for: .normal)
         }
     }
@@ -125,14 +124,14 @@ extension ImageViewController {
     
     @objc func openAlert() {
         
-        let optionMenu = UIAlertController(title: nil, message: "Share photo", preferredStyle: .actionSheet)
-        let shareAction = UIAlertAction(title: "Share", style: .default, handler:
+        let optionMenu = UIAlertController(title: nil, message: HelperDescriptionImages.Navigation.titleSharePhoto, preferredStyle: .actionSheet)
+        let shareAction = UIAlertAction(title: HelperDescriptionImages.Action.Share, style: .default, handler:
         {
             (alert: UIAlertAction!) -> Void in
             self.sharePhoto()
         })
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
+        let cancelAction = UIAlertAction(title: HelperDescriptionImages.Action.Cancel, style: .destructive, handler: nil)
         
         optionMenu.addAction(shareAction)
         optionMenu.addAction(cancelAction)
