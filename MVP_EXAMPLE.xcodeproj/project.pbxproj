@@ -38,6 +38,7 @@
 		42BE6B64250BB0B700CCF496 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BE6B63250BB0B700CCF496 /* ImageViewController.swift */; };
 		42BE6B66250BB0CA00CCF496 /* ImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42BE6B65250BB0CA00CCF496 /* ImageViewController.xib */; };
 		42BE6B68250BB1B300CCF496 /* ImagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BE6B67250BB1B300CCF496 /* ImagePresenter.swift */; };
+		42FDFAC825507079007F3A9B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 42FDFAC725507079007F3A9B /* .gitignore */; };
 		8BA4FE20ECAD674F46971F2D /* Pods_MVP_EXAMPLE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F862E01D9513688F4215D173 /* Pods_MVP_EXAMPLE.framework */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +77,7 @@
 		42BE6B63250BB0B700CCF496 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		42BE6B65250BB0CA00CCF496 /* ImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageViewController.xib; sourceTree = "<group>"; };
 		42BE6B67250BB1B300CCF496 /* ImagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePresenter.swift; sourceTree = "<group>"; };
+		42FDFAC725507079007F3A9B /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		560A021D5F05EEE02ED69E67 /* Pods-MVP_EXAMPLE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVP_EXAMPLE.release.xcconfig"; path = "Target Support Files/Pods-MVP_EXAMPLE/Pods-MVP_EXAMPLE.release.xcconfig"; sourceTree = "<group>"; };
 		F862E01D9513688F4215D173 /* Pods_MVP_EXAMPLE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVP_EXAMPLE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -203,6 +205,7 @@
 		4251C8B624FF7D8C00D3EF94 = {
 			isa = PBXGroup;
 			children = (
+				42FDFAC725507079007F3A9B /* .gitignore */,
 				4251C8C124FF7D8C00D3EF94 /* MVP_EXAMPLE */,
 				4251C8C024FF7D8C00D3EF94 /* Products */,
 				A578995901D16D69C369503E /* Pods */,
@@ -322,6 +325,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42FDFAC825507079007F3A9B /* .gitignore in Resources */,
 				424AD427250B79A5004DADA7 /* ImageViewCell.xib in Resources */,
 				42BE6B66250BB0CA00CCF496 /* ImageViewController.xib in Resources */,
 				42183CF2250554BA00087236 /* BreedTableViewCell.xib in Resources */,
