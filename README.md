@@ -14,13 +14,13 @@ This test project uses open API: https://dog.ceo/
 <table>
   <tr>
     <td>
-      <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/Breeds (MVP)"/>
+      <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/Breeds(MVP)"/>
     </td>
         <td>
-      <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/Share (MVP)"/>
+      <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/Share(MVP)"/>
     </td>
        <td>
-      <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/HistoryCurrencyWeatherForCity_funcDelete.png"/>
+      <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/NoEthernet(MVP)"/>
     </td>
   </tr>
 </table>
