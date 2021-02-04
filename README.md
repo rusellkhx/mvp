@@ -11,10 +11,6 @@ This test project uses open API: https://dog.ceo/
 
 ## Result
 
-<video>
- <source src="https://github.com/rusellkhx/Images/blob/main/Breeds(MVP).mov">
-</video>
-
 <table>
   <tr>
     <td>
