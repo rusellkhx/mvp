@@ -14,22 +14,22 @@ This test project uses open API: https://dog.ceo/
 <table>
   <tr>
     <td>
-      <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/AllBreeds(MVP)"/>
+      <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/AllBreeds(MVP).png"/>
     </td>
     <td>
-      <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/Favorites(MVP)"/>
+      <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/Favorites(MVP).png"/>
     </td>
     <td>
-      <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/TakeLikes(MVP)"/>
+      <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/TakeLikes(MVP).png"/>
     </td>
     <td>
-      <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/FavoritesBreeds(MVP)"/>
+      <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/FavoritesBreeds(MVP).png"/>
     </td>
     <td>
-      <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/Share(MVP)"/>
+      <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/Share(MVP).png"/>
     </td>
     <td>
-      <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/NoEthernet(MVP)"/>
+      <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/NoEthernet(MVP).png"/>
     </td>
   </tr>
 </table>
