@@ -14,12 +14,21 @@ This test project uses open API: https://dog.ceo/
 <table>
   <tr>
     <td>
-      <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/Breeds(MVP)"/>
+      <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/AllBreeds(MVP)"/>
     </td>
-        <td>
+    <td>
+      <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/Favorites(MVP)"/>
+    </td>
+    <td>
+      <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/TakeLikes(MVP)"/>
+    </td>
+    <td>
+      <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/FavoritesBreeds(MVP)"/>
+    </td>
+    <td>
       <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/Share(MVP)"/>
     </td>
-       <td>
+    <td>
       <img src="https://raw.githubusercontent.com/rusellkhx/Images/main/NoEthernet(MVP)"/>
     </td>
   </tr>
